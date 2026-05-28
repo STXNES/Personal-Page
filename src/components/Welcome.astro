@@ -266,20 +266,25 @@
       </div>
     </div>
 
-    <script>
-      const fullText = "this page is being developed";
-      const el = document.querySelector('.typewriter');
-      let i = 0;
+    <script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector('.typewriter');
+    if (!el) return;
 
-      function type() {
-        if (i < fullText.length) {
-          el.textContent += fullText[i];
-          i++;
-          setTimeout(type, 55);
-        }
+    const fullText = "this page is being developed";
+    let i = 0;
+
+    function type() {
+      if (i < fullText.length) {
+        el.textContent += fullText[i];
+        i++;
+        setTimeout(type, 55);
       }
+    }
 
-      setTimeout(type, 500);
-    </script>
+    setTimeout(type, 500);
+  });
+</script>
+</script>
   </body>
 </html>
