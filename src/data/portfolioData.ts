@@ -434,18 +434,6 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
           ],
           tags: ["Intel TSX", "SOP / SLA Compliance", "Process-Control", "ITIL-Aligned", "24/7 Operations", "Root-Cause Analysis"],
         },
-        {
-          role: "CCTV Operator",
-          company: "EYK Security, Costa Rica",
-          period: "2022",
-          summary:
-            "Enterprise physical security surveillance, real-time telemetry monitoring, and incident escalation.",
-          bullets: [
-            "Delivered proactive, enterprise-wide monitoring of CCTV networks and electronic access-control systems.",
-            "Identified and documented security anomalies and facility incidents in real time, coordinating high-priority escalation protocols with physical response teams.",
-          ],
-          tags: ["Surveillance Systems", "Access Control", "Incident Documentation", "Escalation Protocols"],
-        },
       ],
     },
     stack: {
@@ -912,18 +900,6 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
             "Rendimiento constante y compostura en turnos nocturnos rotativos 4x3 (6 PM – 6 AM, rotación semestral) en celdas de trabajo compartidas con operadores, técnicos e ingenieros.",
           ],
           tags: ["Intel TSX", "Cumplimiento SOP / SLA", "Control de Procesos", "Alineado a ITIL", "Operaciones 24/7", "Análisis Causa Raíz"],
-        },
-        {
-          role: "Operador de CCTV",
-          company: "EYK Security, Costa Rica",
-          period: "2022",
-          summary:
-            "Monitoreo proactivo de redes de seguridad empresarial, telemetría de accesos y escalamiento de incidentes.",
-          bullets: [
-            "Monitoreo proactivo a nivel empresarial de redes de CCTV y sistemas de control de acceso en tiempo real.",
-            "Identificación y documentación de incidentes de seguridad, coordinando protocolos de escalamiento de alta prioridad con unidades de respuesta.",
-          ],
-          tags: ["Sistemas CCTV", "Control de Acceso", "Documentación de Incidentes", "Protocolos de Escalamiento"],
         },
       ],
     },
