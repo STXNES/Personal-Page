@@ -17,7 +17,7 @@ const heroProject2Desc = currentLang === 'en'
   : "Laboratorio VMware: Controlador de dominio AD DS, OUs jerárquicas, GPOs de seguridad y DNS/DHCP.";
 ---
 
-<section id="top" class="relative min-h-screen overflow-hidden border-b border-border pt-36 pb-20 lg:pt-44 lg:pb-24 flex flex-col justify-center">
+<section id="top" class="relative min-h-screen lg:min-h-0 lg:h-screen lg:max-h-[960px] overflow-hidden border-b border-border pt-24 pb-12 lg:pt-24 lg:pb-8 flex flex-col justify-center">
   <!-- Cyber Grid Background -->
   <div class="pointer-events-none absolute inset-0 bg-grid opacity-35"></div>
   
@@ -45,8 +45,8 @@ const heroProject2Desc = currentLang === 'en'
   <!-- Energy Ribbon behind Portrait: shifted slightly for optimal photo visibility -->
   <div aria-hidden="true" class="pointer-events-none absolute left-[62%] top-1/2 z-0 hidden h-[140%] w-28 -translate-x-1/2 -translate-y-1/2 -rotate-[20deg] bg-gradient-to-b from-primary/70 via-primary to-primary/70 opacity-50 blur-[1px] lg:block"></div>
 
-  <!-- Portrait Photo: Positioned so Axell is clearly visible and not obscured by cards -->
-  <div class="pointer-events-none absolute bottom-0 left-[53%] hidden h-[90%] -translate-x-1/2 lg:block z-0">
+  <!-- Portrait Photo: Positioned and scaled so Axell is clearly visible, proportional and not oversized -->
+  <div class="pointer-events-none absolute bottom-0 left-[54%] hidden h-[84%] max-h-[640px] xl:max-h-[700px] -translate-x-1/2 lg:block z-0">
     <div class="relative h-full">
       <img
         src="/images/axell.jpg"
@@ -60,37 +60,37 @@ const heroProject2Desc = currentLang === 'en'
   </div>
 
   <!-- Main Hero Layout Container -->
-  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-16 w-full my-auto pt-6 lg:pt-8">
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-16 w-full my-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       
       <!-- Left Column: Bio & Core Info (7 cols) -->
       <div class="lg:col-span-7 max-w-2xl">
-        <!-- Role Kicker: Lowered with generous top clearance so it does not crowd the top viewport -->
-        <div class="inline-flex items-center gap-2.5 rounded-full border border-primary/40 bg-card/85 px-4 py-1.5 backdrop-blur-md shadow-sm mb-3">
+        <!-- Role Kicker: Generous top breathing room without blowing up viewport height -->
+        <div class="inline-flex items-center gap-2.5 rounded-full border border-primary/40 bg-card/85 px-3.5 py-1 backdrop-blur-md shadow-sm mb-2.5">
           <span class="size-2 rounded-full bg-primary animate-pulse"></span>
           <span class="font-mono text-xs font-semibold tracking-wider text-primary uppercase">
             {data.hero.role}
           </span>
         </div>
 
-        <!-- Main Punchy Title -->
-        <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl xl:text-6xl text-foreground">
+        <!-- Main Punchy Title: Crisp, vibrant & 100% sharp text (no blurry transparent gradient clipping) -->
+        <h1 class="mt-3.5 text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] text-foreground">
           {data.hero.titleLine1}{" "}
-          <span class="text-primary bg-gradient-to-r from-primary via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <span class="text-[#a78bfa] font-extrabold drop-shadow-[0_0_20px_rgba(167,139,250,0.35)]">
             {data.hero.titleHighlight}
           </span>
         </h1>
 
         <!-- Subtitle Paragraph -->
-        <p class="mt-5 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal max-w-xl">
+        <p class="mt-3.5 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal max-w-xl">
           {data.hero.subtitle}
         </p>
 
         <!-- CTA Buttons -->
-        <div class="mt-8 flex flex-wrap items-center gap-4">
+        <div class="mt-6 flex flex-wrap items-center gap-3.5">
           <a
             href="#work"
-            class="brackets group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all hover:scale-[1.02]"
+            class="brackets group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all hover:scale-[1.02]"
           >
             {data.hero.ctaWork}
             <svg class="size-4 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -102,7 +102,7 @@ const heroProject2Desc = currentLang === 'en'
           <a
             href="/Axell_Rojas_CV.pdf"
             download="Axell_Rojas_CV.pdf"
-            class="inline-flex items-center gap-2 rounded-lg border border-border bg-card/80 px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground hover:border-primary/60 hover:text-primary transition-all backdrop-blur-sm cursor-pointer"
+            class="inline-flex items-center gap-2 rounded-lg border border-border bg-card/80 px-4.5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-foreground hover:border-primary/60 hover:text-primary transition-all backdrop-blur-sm cursor-pointer"
           >
             <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -115,7 +115,7 @@ const heroProject2Desc = currentLang === 'en'
           <button
             id="open-dossier-hero"
             type="button"
-            class="inline-flex items-center gap-1.5 px-3 py-3 font-mono text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+            class="inline-flex items-center gap-1.5 px-3 py-2.5 font-mono text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer"
           >
             <span class="size-1.5 rounded-full bg-emerald-500"></span>
             <span>Dossier &amp; Contact</span>
@@ -123,7 +123,7 @@ const heroProject2Desc = currentLang === 'en'
         </div>
 
         <!-- Quick Spec Stats Row: Generous Gap so AD DS / WS22 fits on a single line with Enterprise Infrastructure below it -->
-        <div class="mt-12 flex flex-wrap items-start gap-10 sm:gap-14 border-t border-border pt-6 max-w-2xl">
+        <div class="mt-8 flex flex-wrap items-start gap-8 sm:gap-12 border-t border-border pt-4 max-w-2xl">
           <div>
             <p class="font-mono text-lg sm:text-xl font-black text-foreground whitespace-nowrap">2+ Yrs</p>
             <p class="font-mono text-xs text-muted-foreground whitespace-nowrap mt-1">Intel Cleanroom Ops</p>
@@ -196,14 +196,14 @@ const heroProject2Desc = currentLang === 'en'
           </a>
 
           <!-- Card 03: Fully Enclosed System Status Card (No clipping, completely enclosed with full borders and legible text!) -->
-          <div class="brackets relative rounded-xl border border-primary/40 bg-card/95 backdrop-blur-md p-5 sm:p-6 mt-4 shadow-xl">
+          <div class="brackets relative rounded-xl border border-primary/40 bg-card/95 backdrop-blur-md p-4 sm:p-5 mt-2.5 shadow-xl">
             <div class="flex items-center justify-between">
               <p class="font-mono text-xs tracking-[0.25em] text-muted-foreground uppercase font-semibold">
                 {data.hero.systemStatus}
               </p>
               <span class="size-2 rounded-full bg-emerald-500 animate-ping"></span>
             </div>
-            <p class="mt-2.5 font-mono text-sm sm:text-base font-extrabold leading-snug text-foreground">
+            <p class="mt-2 font-mono text-sm sm:text-base font-extrabold leading-snug text-foreground">
               {data.hero.systemReady}
             </p>
           </div>
