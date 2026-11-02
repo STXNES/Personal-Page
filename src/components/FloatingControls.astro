@@ -75,47 +75,49 @@ const { currentLang = 'es' } = Astro.props;
   </button>
 </div>
 
-<!-- Bottom-Left Floating Player Card Pill -->
-<div class="fixed bottom-5 left-4 lg:left-8 z-40">
+<!-- Bottom-Left Floating Player Card Pill (Enlarged, Clear Photo, Name & Title) -->
+<div class="fixed bottom-6 left-4 lg:left-8 z-40">
   <button
     id="player-card-trigger"
     type="button"
     aria-label="Abrir ficha técnica y CV de Axell Rojas"
-    class="group flex items-center gap-3 rounded-full border border-border/80 bg-card/90 p-1.5 pr-4 backdrop-blur-md shadow-lg transition-all hover:scale-[1.03] hover:border-primary/60 cursor-pointer"
+    class="group flex items-center gap-3.5 rounded-full border border-border/80 bg-card/95 py-2 px-3 sm:py-2.5 sm:px-4 backdrop-blur-xl shadow-xl shadow-black/20 transition-all hover:scale-[1.03] hover:border-primary/70 cursor-pointer"
   >
-    <div class="relative size-9 overflow-hidden rounded-full border border-primary/40 bg-muted">
+    <!-- Photo: Full view of face without overlapping dots -->
+    <div class="relative size-11 sm:size-12 overflow-hidden rounded-full border-2 border-primary/50 shadow-md bg-muted shrink-0">
       <img
         src="/images/avatar.jpg"
         alt="Axell Rojas"
-        class="size-full object-cover"
+        class="size-full object-cover object-top"
       />
-      <span class="absolute bottom-0 right-0 size-2.5 rounded-full bg-emerald-500 ring-2 ring-card"></span>
     </div>
-    <div class="flex flex-col text-left">
-      <div class="flex items-center gap-1.5">
-        <span class="font-bold text-xs text-foreground group-hover:text-primary transition-colors">Axell Rojas</span>
-        <span class="size-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+    
+    <!-- Info: Name & IT Infrastructure Specialist -->
+    <div class="flex flex-col text-left pr-1.5">
+      <div class="flex items-center gap-2">
+        <span class="font-extrabold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors leading-snug">
+          Axell Rojas
+        </span>
+        <span class="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
       </div>
-      <span class="font-mono text-[10px] text-muted-foreground tracking-tight">Open to Work · Dossier &amp; CV</span>
+      <span class="font-mono text-xs text-primary font-medium tracking-tight">
+        IT Infrastructure Specialist
+      </span>
     </div>
   </button>
 </div>
 
 <script>
-  // Theme toggle functionality
   const themeToggle = document.getElementById('theme-toggle-btn');
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 
-  // Language toggle functionality
   const langToggle = document.getElementById('lang-toggle-btn');
   langToggle?.addEventListener('click', () => {
     const currentLang = document.documentElement.getAttribute('lang') || 'es';
     const nextLang = currentLang === 'es' ? 'en' : 'es';
-    
-    // Dispatch custom event for instant client-side switch
     window.dispatchEvent(new CustomEvent('toggle-language', { detail: { lang: nextLang } }));
   });
 </script>

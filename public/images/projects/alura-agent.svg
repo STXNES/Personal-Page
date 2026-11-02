@@ -1,85 +1,131 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="100%" height="100%">
   <defs>
-    <linearGradient id="bg-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0c0d18" />
-      <stop offset="100%" stop-color="#151628" />
+    <linearGradient id="rag-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c16" />
+      <stop offset="100%" stop-color="#121526" />
     </linearGradient>
-    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="rag-purple" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#8567fa" />
       <stop offset="100%" stop-color="#a78bfa" />
     </linearGradient>
-    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1" fill="#8567fa" opacity="0.12" />
+    <pattern id="rag-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <path d="M 22 0 L 0 0 0 22" fill="none" stroke="#8567fa" stroke-width="0.5" opacity="0.07" />
     </pattern>
   </defs>
 
-  <!-- Background -->
-  <rect width="800" height="450" fill="url(#bg-grad-1)" />
-  <rect width="800" height="450" fill="url(#dot-grid)" />
+  <rect width="900" height="520" fill="url(#rag-bg)" />
+  <rect width="900" height="520" fill="url(#rag-grid)" />
 
-  <!-- Window Header -->
-  <rect x="30" y="25" width="740" height="400" rx="12" fill="#111222" stroke="#2a2b45" stroke-width="1.5" />
-  <rect x="30" y="25" width="740" height="40" rx="12" fill="#181a30" />
-  <circle cx="55" cy="45" r="5" fill="#ef4444" opacity="0.8" />
-  <circle cx="75" cy="45" r="5" fill="#eab308" opacity="0.8" />
-  <circle cx="95" cy="45" r="5" fill="#22c55e" opacity="0.8" />
+  <!-- Window Container -->
+  <rect x="25" y="20" width="850" height="480" rx="14" fill="#0e101f" stroke="#252945" stroke-width="1.5" />
   
-  <text x="130" y="49" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8b8ea8">alura-rag-agent // LangChain · FAISS · Groq · OCI</text>
-  <rect x="660" y="36" width="90" height="18" rx="4" fill="#8567fa" fill-opacity="0.2" />
-  <text x="705" y="49" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#a78bfa">ONLINE</text>
-
-  <!-- Sidebar -->
-  <rect x="45" y="80" width="200" height="330" rx="8" fill="#14162a" stroke="#252740" />
-  <text x="60" y="105" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#a78bfa">DOCUMENT INGESTION</text>
+  <!-- Window Header Bar -->
+  <rect x="25" y="20" width="850" height="44" rx="14" fill="#14182e" />
+  <circle cx="52" cy="42" r="5.5" fill="#ef4444" opacity="0.8" />
+  <circle cx="72" cy="42" r="5.5" fill="#eab308" opacity="0.8" />
+  <circle cx="92" cy="42" r="5.5" fill="#22c55e" opacity="0.8" />
   
-  <!-- Document items -->
-  <rect x="55" y="120" width="180" height="38" rx="6" fill="#1b1d36" stroke="#8567fa" stroke-opacity="0.3" />
-  <text x="70" y="137" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">📄 Politicas_HR_2026.pdf</text>
-  <text x="70" y="150" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (48 chunks)</text>
-
-  <rect x="55" y="168" width="180" height="38" rx="6" fill="#1b1d36" stroke="#2e3152" />
-  <text x="70" y="185" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">📊 Inventario_Q3.csv</text>
-  <text x="70" y="198" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (112 filas)</text>
-
-  <rect x="55" y="216" width="180" height="38" rx="6" fill="#1b1d36" stroke="#2e3152" />
-  <text x="70" y="233" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">📑 Manual_Operaciones.pdf</text>
-  <text x="70" y="246" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (84 chunks)</text>
-
-  <!-- Vector DB Metric -->
-  <rect x="55" y="280" width="180" height="110" rx="6" fill="#16182e" stroke="#2a2c4a" />
-  <text x="70" y="302" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">VECTOR STORE METRICS</text>
-  <text x="70" y="325" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#8567fa">FAISS CPU Index</text>
-  <text x="70" y="345" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">Dimensión: 768 / L2 Similitud</text>
-  <text x="70" y="362" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">Latencia: ~12ms per search</text>
-  <text x="70" y="378" font-family="'JetBrains Mono', monospace" font-size="10" fill="#22c55e">OCI Compute: Ampere A1 (ARM)</text>
-
-  <!-- Chat / Query Interface -->
-  <rect x="260" y="80" width="495" height="330" rx="8" fill="#14162a" stroke="#252740" />
+  <text x="125" y="46" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" fill="#9ca3af">alura-rag-agent // LangChain · FAISS Vector DB · Groq Llama 3.3 · OCI Compute</text>
   
-  <!-- User query -->
-  <rect x="360" y="100" width="380" height="45" rx="8" fill="#24274c" stroke="#8567fa" stroke-opacity="0.4" />
-  <text x="375" y="120" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">¿Cuál es el procedimiento de solicitud de vacaciones</text>
-  <text x="375" y="135" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">y con cuántos días de anticipación se entrega?</text>
+  <!-- Status Chip -->
+  <rect x="740" y="32" width="115" height="22" rx="6" fill="#8567fa" fill-opacity="0.18" stroke="#8567fa" stroke-opacity="0.4" />
+  <circle cx="754" cy="43" r="3.5" fill="#22c55e" />
+  <text x="765" y="47" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#c4b5fd">OCI LIVE · 8.4ms</text>
 
-  <!-- Agent reasoning badge -->
-  <rect x="275" y="155" width="230" height="20" rx="4" fill="#8567fa" fill-opacity="0.15" />
-  <text x="285" y="169" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a78bfa">⚡ RAG Retriever: 3 fragmentos encontrados (Score > 0.88)</text>
+  <!-- Left Sidebar: Document Ingestion & Vector Metrics -->
+  <rect x="42" y="80" width="230" height="400" rx="10" fill="#121528" stroke="#202540" />
+  <rect x="42" y="80" width="230" height="34" rx="10" fill="#161a33" />
+  <text x="56" y="102" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#8567fa">KNOWLEDGE SOURCES</text>
+
+  <!-- Ingestion Item 1 -->
+  <g transform="translate(54, 126)">
+    <rect width="206" height="46" rx="7" fill="#181c38" stroke="#8567fa" stroke-opacity="0.4" />
+    <rect x="10" y="12" width="22" height="22" rx="4" fill="#8567fa" fill-opacity="0.2" />
+    <path d="M17 19 L25 19 M17 23 L23 23 M17 27 L21 27" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" />
+    <text x="40" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#f1f5f9">Politicas_RRHH_2026.pdf</text>
+    <text x="40" y="38" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399">✓ 48 Chunks (L2 indexed)</text>
+  </g>
+
+  <!-- Ingestion Item 2 -->
+  <g transform="translate(54, 180)">
+    <rect width="206" height="46" rx="7" fill="#181c38" stroke="#2a3055" />
+    <rect x="10" y="12" width="22" height="22" rx="4" fill="#0284c7" fill-opacity="0.2" />
+    <path d="M16 18 L26 18 M16 23 L26 23 M21 18 L21 28" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#cbd5e1">Inventario_Equipos.csv</text>
+    <text x="40" y="38" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399">✓ 112 Filas mapeadas</text>
+  </g>
+
+  <!-- Ingestion Item 3 -->
+  <g transform="translate(54, 234)">
+    <rect width="206" height="46" rx="7" fill="#181c38" stroke="#2a3055" />
+    <rect x="10" y="12" width="22" height="22" rx="4" fill="#8567fa" fill-opacity="0.2" />
+    <path d="M17 19 L25 19 M17 23 L23 23" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" />
+    <text x="40" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#cbd5e1">Manual_SOP_ITIL.pdf</text>
+    <text x="40" y="38" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399">✓ 84 Chunks (L2 indexed)</text>
+  </g>
+
+  <!-- Vector Engine Specs Tile -->
+  <g transform="translate(54, 300)">
+    <rect width="206" height="165" rx="8" fill="#151930" stroke="#252b4a" />
+    <text x="14" y="22" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#a78bfa">VECTOR PIPELINE SPECS</text>
+    <text x="14" y="44" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Index: IndexFlatL2 (CPU RAM)</text>
+    <text x="14" y="62" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Dimension: 768 / Cosine</text>
+    <text x="14" y="80" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Chunk Size: 500 chars (overlap 50)</text>
+    <text x="14" y="98" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38bdf8">Top-k Retrieved: 3 chunks</text>
+    
+    <line x1="14" y1="112" x2="192" y2="112" stroke="#252b4a" />
+    <text x="14" y="132" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#34d399">OCI Host: Ampere A1 (ARM)</text>
+    <text x="14" y="148" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#64748b">Docker Compose: FastAPI + UI</text>
+  </g>
+
+  <!-- Right Main: RAG Interaction & Citations Feed -->
+  <rect x="290" y="80" width="565" height="400" rx="10" fill="#121528" stroke="#202540" />
+
+  <!-- Query User Message Bubble -->
+  <g transform="translate(315, 102)">
+    <rect width="515" height="58" rx="8" fill="#202548" stroke="#8567fa" stroke-opacity="0.5" />
+    <circle cx="24" cy="24" r="10" fill="#8567fa" fill-opacity="0.3" />
+    <text x="24" y="28" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#c4b5fd">U</text>
+    <text x="44" y="24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#f8fafc">Pregunta del Colaborador:</text>
+    <text x="44" y="42" font-family="sans-serif" font-size="12" fill="#e2e8f0">¿Cuál es el procedimiento y anticipación para solicitar vacaciones según la normativa?</text>
+  </g>
+
+  <!-- Retrieval Telemetry Strip -->
+  <g transform="translate(315, 172)">
+    <rect width="360" height="22" rx="4" fill="#8567fa" fill-opacity="0.15" stroke="#8567fa" stroke-opacity="0.3" />
+    <text x="12" y="15" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#c4b5fd">⚡ FAISS Retriev: 3 chunks encontrados (Score: 0.91, 0.88, 0.84)</text>
+  </g>
 
   <!-- Agent Response Box -->
-  <rect x="275" y="185" width="465" height="155" rx="8" fill="#1b1d38" stroke="#363960" />
-  <text x="295" y="212" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#8567fa">AI Agent (Groq Llama 3.3 70B):</text>
-  <text x="295" y="235" font-family="sans-serif" font-size="12" fill="#e2e8f0">De acuerdo con el documento normativo interno, la solicitud debe realizarse con</text>
-  <text x="295" y="253" font-family="sans-serif" font-size="12" fill="#e2e8f0">un mínimo de <tspan fill="#38bdf8" font-weight="bold">15 días hábiles de anticipación</tspan> a través del portal de RRHH,</text>
-  <text x="295" y="271" font-family="sans-serif" font-size="12" fill="#e2e8f0">contando con el visto bueno del líder directo antes del cierre de planilla.</text>
+  <g transform="translate(315, 204)">
+    <rect width="515" height="198" rx="8" fill="#171b35" stroke="#2d335c" />
+    
+    <!-- Header of response -->
+    <rect x="0" y="0" width="515" height="34" rx="8" fill="#1d2242" />
+    <circle cx="20" cy="17" r="7" fill="#22c55e" fill-opacity="0.25" />
+    <circle cx="20" cy="17" r="3.5" fill="#22c55e" />
+    <text x="36" y="21" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#8567fa">AI Agent (Groq Llama 3.3 70B Versatile):</text>
+    <text x="440" y="21" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">1,240 t/s</text>
 
-  <!-- Citations Box -->
-  <rect x="295" y="288" width="425" height="38" rx="6" fill="#131528" stroke="#8567fa" stroke-width="1" />
-  <text x="310" y="304" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#a78bfa">📌 CITAS EXACTAS DETECTADAS:</text>
-  <text x="310" y="318" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">• [Politicas_HR_2026.pdf - Pág. 14, Sec. 4.2: Procedimientos de Ausencia]</text>
+    <!-- Synthesized body -->
+    <text x="18" y="58" font-family="sans-serif" font-size="12.5" fill="#f1f5f9">De acuerdo con el documento de políticas internas, las solicitudes de vacaciones deben</text>
+    <text x="18" y="78" font-family="sans-serif" font-size="12.5" fill="#f1f5f9">ser radicadas con un mínimo de <tspan fill="#38bdf8" font-weight="bold">15 días hábiles de anticipación</tspan> a través del portal de RRHH.</text>
+    <text x="18" y="98" font-family="sans-serif" font-size="12.5" fill="#f1f5f9">Se requiere la aprobación previa del líder directo antes del cierre de nómina quincenal.</text>
 
-  <!-- Input bar bottom -->
-  <rect x="275" y="355" width="465" height="42" rx="6" fill="#0f1020" stroke="#252740" />
-  <text x="295" y="380" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Pregunta sobre los documentos cargados... (Enter para enviar)</text>
-  <circle cx="718" cy="376" r="12" fill="#8567fa" />
-  <path d="M714 376 L722 376 M719 372 L723 376 L719 380" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" />
+    <!-- Source Citation Banner -->
+    <rect x="18" y="118" width="479" height="66" rx="6" fill="#101326" stroke="#8567fa" stroke-width="1.2" />
+    <rect x="26" y="126" width="135" height="18" rx="4" fill="#8567fa" fill-opacity="0.25" />
+    <text x="32" y="139" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#a78bfa">CITA EXACTA VERIFICADA</text>
+    
+    <text x="26" y="160" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#f8fafc">Documento: <tspan fill="#38bdf8">Politicas_RRHH_2026.pdf</tspan> | Página: <tspan fill="#38bdf8">14</tspan> | Art. <tspan fill="#38bdf8">4.2 (Ausencias)</tspan></text>
+    <text x="26" y="174" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748b">Hash de verificación: sha256:7f4a...90b2 | Similitud L2: 0.912</text>
+  </g>
+
+  <!-- Query input bar at bottom -->
+  <g transform="translate(315, 416)">
+    <rect width="515" height="48" rx="7" fill="#0d0f20" stroke="#252b48" />
+    <text x="18" y="29" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Escribe tu consulta sobre la documentación interna... (Enter)</text>
+    <rect x="445" y="10" width="56" height="28" rx="5" fill="#8567fa" />
+    <text x="473" y="27" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#ffffff">ENVIAR</text>
+  </g>
 </svg>
