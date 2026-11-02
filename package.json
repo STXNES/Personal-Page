@@ -14,5 +14,11 @@
   "dependencies": {
     "astro": "^6.3.8",
     "git": "^0.1.5"
+  },
+  "devDependencies": {
+    "@lucide/astro": "^1.66.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "lucide-astro": "^0.556.0",
+    "tailwindcss": "^4.3.3"
   }
 }

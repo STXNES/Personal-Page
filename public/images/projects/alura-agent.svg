@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d18" />
+      <stop offset="100%" stop-color="#151628" />
+    </linearGradient>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8567fa" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#8567fa" opacity="0.12" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg-grad-1)" />
+  <rect width="800" height="450" fill="url(#dot-grid)" />
+
+  <!-- Window Header -->
+  <rect x="30" y="25" width="740" height="400" rx="12" fill="#111222" stroke="#2a2b45" stroke-width="1.5" />
+  <rect x="30" y="25" width="740" height="40" rx="12" fill="#181a30" />
+  <circle cx="55" cy="45" r="5" fill="#ef4444" opacity="0.8" />
+  <circle cx="75" cy="45" r="5" fill="#eab308" opacity="0.8" />
+  <circle cx="95" cy="45" r="5" fill="#22c55e" opacity="0.8" />
+  
+  <text x="130" y="49" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8b8ea8">alura-rag-agent // LangChain · FAISS · Groq · OCI</text>
+  <rect x="660" y="36" width="90" height="18" rx="4" fill="#8567fa" fill-opacity="0.2" />
+  <text x="705" y="49" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#a78bfa">ONLINE</text>
+
+  <!-- Sidebar -->
+  <rect x="45" y="80" width="200" height="330" rx="8" fill="#14162a" stroke="#252740" />
+  <text x="60" y="105" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#a78bfa">DOCUMENT INGESTION</text>
+  
+  <!-- Document items -->
+  <rect x="55" y="120" width="180" height="38" rx="6" fill="#1b1d36" stroke="#8567fa" stroke-opacity="0.3" />
+  <text x="70" y="137" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">📄 Politicas_HR_2026.pdf</text>
+  <text x="70" y="150" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (48 chunks)</text>
+
+  <rect x="55" y="168" width="180" height="38" rx="6" fill="#1b1d36" stroke="#2e3152" />
+  <text x="70" y="185" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">📊 Inventario_Q3.csv</text>
+  <text x="70" y="198" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (112 filas)</text>
+
+  <rect x="55" y="216" width="180" height="38" rx="6" fill="#1b1d36" stroke="#2e3152" />
+  <text x="70" y="233" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">📑 Manual_Operaciones.pdf</text>
+  <text x="70" y="246" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">✓ Indexado (84 chunks)</text>
+
+  <!-- Vector DB Metric -->
+  <rect x="55" y="280" width="180" height="110" rx="6" fill="#16182e" stroke="#2a2c4a" />
+  <text x="70" y="302" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">VECTOR STORE METRICS</text>
+  <text x="70" y="325" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#8567fa">FAISS CPU Index</text>
+  <text x="70" y="345" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">Dimensión: 768 / L2 Similitud</text>
+  <text x="70" y="362" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">Latencia: ~12ms per search</text>
+  <text x="70" y="378" font-family="'JetBrains Mono', monospace" font-size="10" fill="#22c55e">OCI Compute: Ampere A1 (ARM)</text>
+
+  <!-- Chat / Query Interface -->
+  <rect x="260" y="80" width="495" height="330" rx="8" fill="#14162a" stroke="#252740" />
+  
+  <!-- User query -->
+  <rect x="360" y="100" width="380" height="45" rx="8" fill="#24274c" stroke="#8567fa" stroke-opacity="0.4" />
+  <text x="375" y="120" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">¿Cuál es el procedimiento de solicitud de vacaciones</text>
+  <text x="375" y="135" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">y con cuántos días de anticipación se entrega?</text>
+
+  <!-- Agent reasoning badge -->
+  <rect x="275" y="155" width="230" height="20" rx="4" fill="#8567fa" fill-opacity="0.15" />
+  <text x="285" y="169" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a78bfa">⚡ RAG Retriever: 3 fragmentos encontrados (Score > 0.88)</text>
+
+  <!-- Agent Response Box -->
+  <rect x="275" y="185" width="465" height="155" rx="8" fill="#1b1d38" stroke="#363960" />
+  <text x="295" y="212" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#8567fa">AI Agent (Groq Llama 3.3 70B):</text>
+  <text x="295" y="235" font-family="sans-serif" font-size="12" fill="#e2e8f0">De acuerdo con el documento normativo interno, la solicitud debe realizarse con</text>
+  <text x="295" y="253" font-family="sans-serif" font-size="12" fill="#e2e8f0">un mínimo de <tspan fill="#38bdf8" font-weight="bold">15 días hábiles de anticipación</tspan> a través del portal de RRHH,</text>
+  <text x="295" y="271" font-family="sans-serif" font-size="12" fill="#e2e8f0">contando con el visto bueno del líder directo antes del cierre de planilla.</text>
+
+  <!-- Citations Box -->
+  <rect x="295" y="288" width="425" height="38" rx="6" fill="#131528" stroke="#8567fa" stroke-width="1" />
+  <text x="310" y="304" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#a78bfa">📌 CITAS EXACTAS DETECTADAS:</text>
+  <text x="310" y="318" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">• [Politicas_HR_2026.pdf - Pág. 14, Sec. 4.2: Procedimientos de Ausencia]</text>
+
+  <!-- Input bar bottom -->
+  <rect x="275" y="355" width="465" height="42" rx="6" fill="#0f1020" stroke="#252740" />
+  <text x="295" y="380" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Pregunta sobre los documentos cargados... (Enter para enviar)</text>
+  <circle cx="718" cy="376" r="12" fill="#8567fa" />
+  <path d="M714 376 L722 376 M719 372 L723 376 L719 380" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" />
+</svg>

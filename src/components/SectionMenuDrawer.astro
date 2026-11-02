@@ -1,0 +1,184 @@
+---
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  currentLang?: 'en' | 'es';
+}
+
+const { currentLang = 'es' } = Astro.props;
+const data = portfolioData[currentLang];
+---
+
+<div
+  id="section-menu-overlay"
+  class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <div
+    id="section-menu-panel"
+    class="fixed left-0 top-0 bottom-0 w-full max-w-md bg-card/95 border-r border-border p-6 sm:p-10 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto"
+  >
+    <!-- Header with close button -->
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-border">
+        <div class="flex items-center gap-2">
+          <span class="size-2 rounded-full bg-primary animate-pulse"></span>
+          <span class="font-mono text-xs font-bold tracking-[0.25em] text-primary">SYSTEM NAVIGATION</span>
+        </div>
+        <button
+          id="close-menu-btn"
+          type="button"
+          aria-label="Cerrar menú"
+          class="size-8 flex items-center justify-center rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mt-8 space-y-4">
+        <a
+          href="#top"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">01</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">Hero // Core</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#work"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">02</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{data.nav.work} // Labs</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#experience"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">03</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{data.nav.experience}</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#stack"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">04</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{data.nav.stack}</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#certifications"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">05</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{data.nav.certifications}</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#about"
+          class="menu-link group flex items-center justify-between py-3 px-4 rounded-lg border border-transparent hover:border-border hover:bg-secondary/60 transition-all"
+        >
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-xs text-primary font-semibold">06</span>
+            <span class="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{data.nav.about}</span>
+          </div>
+          <svg class="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Bottom info card -->
+    <div class="mt-8 pt-6 border-t border-border">
+      <div class="brackets p-4 rounded-lg bg-card border border-border">
+        <p class="font-mono text-[10px] text-muted-foreground tracking-widest uppercase">DIRECT CONTACT</p>
+        <p class="mt-1 font-semibold text-sm text-foreground">axelry2402@gmail.com</p>
+        <p class="font-mono text-xs text-muted-foreground mt-0.5">+506 6359-9128 · Naranjo, CR</p>
+        <div class="mt-3 flex items-center gap-3 pt-3 border-t border-border">
+          <a
+            href="https://github.com/STXNES"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-mono font-medium text-primary hover:underline"
+          >
+            GitHub ↗
+          </a>
+          <span class="text-border">·</span>
+          <a
+            href="https://linkedin.com/in/axro"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-mono font-medium text-primary hover:underline"
+          >
+            LinkedIn ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle-btn');
+  const menuOverlay = document.getElementById('section-menu-overlay');
+  const menuPanel = document.getElementById('section-menu-panel');
+  const closeMenu = document.getElementById('close-menu-btn');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  function openDrawer() {
+    menuOverlay?.classList.remove('opacity-0', 'pointer-events-none');
+    menuPanel?.classList.remove('-translate-x-full');
+  }
+
+  function closeDrawer() {
+    menuOverlay?.classList.add('opacity-0', 'pointer-events-none');
+    menuPanel?.classList.add('-translate-x-full');
+  }
+
+  menuToggle?.addEventListener('click', openDrawer);
+  closeMenu?.addEventListener('click', closeDrawer);
+  menuOverlay?.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) closeDrawer();
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+</script>

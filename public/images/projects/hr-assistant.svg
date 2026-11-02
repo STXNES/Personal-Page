@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-hr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <pattern id="grid-hr" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ff6d5a" stroke-width="0.5" opacity="0.08" />
+    </pattern>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg-grad-hr)" />
+  <rect width="800" height="450" fill="url(#grid-hr)" />
+
+  <!-- Frame -->
+  <rect x="30" y="25" width="740" height="400" rx="12" fill="#0d111d" stroke="#1f293d" stroke-width="1.5" />
+  <rect x="30" y="25" width="740" height="40" rx="12" fill="#131a2c" />
+  <circle cx="55" cy="45" r="5" fill="#ef4444" opacity="0.8" />
+  <circle cx="75" cy="45" r="5" fill="#eab308" opacity="0.8" />
+  <circle cx="95" cy="45" r="5" fill="#22c55e" opacity="0.8" />
+
+  <text x="130" y="49" font-family="'JetBrains Mono', monospace" font-size="12" fill="#94a3b8">hr-process-automation // n8n Workflow Engine · Cohere · Telegram · Neon DB</text>
+  <rect x="670" y="36" width="80" height="18" rx="4" fill="#ff6d5a" fill-opacity="0.2" />
+  <text x="710" y="49" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#ff6d5a">ACTIVE RUN</text>
+
+  <!-- n8n Workflow Canvas Visual -->
+  <!-- Node 1: Telegram Webhook -->
+  <g transform="translate(60, 110)">
+    <rect width="130" height="70" rx="8" fill="#172033" stroke="#0ea5e9" stroke-width="1.5" />
+    <circle cx="25" cy="25" r="10" fill="#0ea5e9" fill-opacity="0.2" />
+    <text x="25" y="29" text-anchor="middle" font-size="12">✈️</text>
+    <text x="45" y="28" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38bdf8">Telegram Bot</text>
+    <text x="15" y="55" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Webhook Trigger</text>
+    <circle cx="130" cy="35" r="4" fill="#0ea5e9" />
+  </g>
+
+  <!-- Connection Line 1 -->
+  <path d="M 190 145 C 220 145, 210 145, 240 145" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 2" fill="none" />
+
+  <!-- Node 2: Cohere Embeddings / Vector Filter -->
+  <g transform="translate(240, 110)">
+    <rect width="140" height="70" rx="8" fill="#172033" stroke="#8567fa" stroke-width="1.5" />
+    <circle cx="25" cy="25" r="10" fill="#8567fa" fill-opacity="0.2" />
+    <text x="25" y="29" text-anchor="middle" font-size="12">🧠</text>
+    <text x="45" y="28" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#c084fc">Cohere RAG</text>
+    <text x="15" y="55" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Embed-multilingual</text>
+    <circle cx="140" cy="35" r="4" fill="#8567fa" />
+  </g>
+
+  <!-- Connection Line 2 -->
+  <path d="M 380 145 C 410 145, 400 145, 430 145" stroke="#8567fa" stroke-width="2" fill="none" />
+
+  <!-- Node 3: Neon PostgreSQL -->
+  <g transform="translate(430, 110)">
+    <rect width="135" height="70" rx="8" fill="#172033" stroke="#00e599" stroke-width="1.5" />
+    <circle cx="25" cy="25" r="10" fill="#00e599" fill-opacity="0.2" />
+    <text x="25" y="29" text-anchor="middle" font-size="12">🐘</text>
+    <text x="45" y="28" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#00e599">Neon Postgres</text>
+    <text x="15" y="55" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">pgvector / State</text>
+    <circle cx="135" cy="35" r="4" fill="#00e599" />
+  </g>
+
+  <!-- Connection Line 3 -->
+  <path d="M 565 145 C 585 145, 595 145, 615 145" stroke="#ff6d5a" stroke-width="2" fill="none" />
+
+  <!-- Node 4: n8n Dispatcher & Action -->
+  <g transform="translate(615, 110)">
+    <rect width="135" height="70" rx="8" fill="#172033" stroke="#ff6d5a" stroke-width="1.5" />
+    <circle cx="25" cy="25" r="10" fill="#ff6d5a" fill-opacity="0.2" />
+    <text x="25" y="29" text-anchor="middle" font-size="12">⚙️</text>
+    <text x="45" y="28" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#ff6d5a">HR Dispatcher</text>
+    <text x="15" y="55" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">REST API & Email</text>
+  </g>
+
+  <!-- Realtime Execution Terminal Console -->
+  <rect x="60" y="215" width="690" height="185" rx="8" fill="#090d16" stroke="#1e2738" />
+  <rect x="60" y="215" width="690" height="28" rx="8" fill="#111827" />
+  <text x="75" y="234" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">EXECUTION LOGS // n8n workflow execution #9482</text>
+  <circle cx="730" cy="229" r="4" fill="#22c55e" />
+
+  <text x="80" y="265" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">[2026-11-02 02:14:02] [INBOUND] Webhook received from Telegram (@employee_juan): "Necesito mi constancia salarial"</text>
+  <text x="80" y="288" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c084fc">[2026-11-02 02:14:03] [RAG] Cohere embeddings calculated. Matched template: "Certificación Salarial Automatizada"</text>
+  <text x="80" y="311" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00e599">[2026-11-02 02:14:03] [DATABASE] Querying Neon PostgreSQL: Employee #10842 verified. Status: Active.</text>
+  <text x="80" y="334" font-family="'JetBrains Mono', monospace" font-size="11" fill="#ff6d5a">[2026-11-02 02:14:04] [DISPATCH] PDF certificate generated via REST API &amp; dispatched to Telegram channel.</text>
+  <text x="80" y="357" font-family="'JetBrains Mono', monospace" font-size="11" fill="#22c55e">[2026-11-02 02:14:04] [SUCCESS] Workflow execution finished in 1.42s with code 200 OK.</text>
+  <text x="80" y="380" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">_ awaiting next webhook payload...</text>
+</svg>

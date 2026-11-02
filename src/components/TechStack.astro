@@ -1,0 +1,65 @@
+---
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  currentLang?: 'en' | 'es';
+}
+
+const { currentLang = 'es' } = Astro.props;
+const data = portfolioData[currentLang];
+---
+
+<section id="stack" class="relative scroll-mt-20 border-b border-border py-16 sm:py-24">
+  <div class="pointer-events-none absolute inset-0 bg-grid opacity-20"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-16">
+    <!-- Section Kicker Header -->
+    <div class="flex items-center gap-3">
+      <span class="h-px w-8 bg-primary"></span>
+      <span class="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
+        {data.stack.label}
+      </span>
+    </div>
+
+    <div class="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+          Core Technical Competencies &amp; Tooling
+        </h2>
+        <p class="mt-2 text-sm text-muted-foreground max-w-xl">
+          A disciplined stack balancing enterprise server administration, virtualization topology, and modern autonomous AI pipelines.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tech Groups Grid -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {data.stack.groups.map((group, index) => (
+        <div class="brackets group rounded-xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card">
+          <!-- Group Title -->
+          <div class="flex items-center justify-between pb-4 border-b border-border">
+            <h3 class="font-mono text-xs font-bold tracking-wider text-primary uppercase">
+              {group.title}
+            </h3>
+            <span class="font-mono text-xs text-muted-foreground/50">
+              0{index + 1}
+            </span>
+          </div>
+
+          <!-- Items List -->
+          <ul class="mt-4 space-y-2.5">
+            {group.items.map((item) => (
+              <li class="flex items-center justify-between text-xs sm:text-sm text-foreground/90 group/item hover:text-primary transition-colors">
+                <div class="flex items-center gap-2.5">
+                  <span class="size-1 rounded-full bg-primary/60 group-hover/item:scale-150 transition-transform"></span>
+                  <span class="font-medium">{item.name}</span>
+                </div>
+                <span class="font-mono text-[10px] text-muted-foreground/60 uppercase">Verified</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

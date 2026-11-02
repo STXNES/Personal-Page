@@ -1,0 +1,253 @@
+---
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  currentLang?: 'en' | 'es';
+}
+
+const { currentLang = 'es' } = Astro.props;
+const data = portfolioData[currentLang];
+---
+
+<div
+  id="project-detail-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <div
+    id="project-detail-card"
+    class="brackets relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl border border-border bg-card/95 p-6 sm:p-10 shadow-2xl backdrop-blur-xl transform scale-95 transition-transform duration-300"
+  >
+    <!-- Modal Close Button -->
+    <button
+      id="close-project-modal"
+      type="button"
+      aria-label="Cerrar detalles del proyecto"
+      class="absolute right-5 top-5 size-9 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors cursor-pointer bg-card/60 z-20"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Modal Content Container (Dynamic filled by JS) -->
+    <div id="modal-dynamic-content">
+      <!-- Top Tag & Title -->
+      <div class="flex flex-wrap items-center gap-3">
+        <span id="modal-tag" class="font-mono text-[11px] font-bold tracking-widest text-primary uppercase border border-primary/30 px-3 py-0.5 rounded-full bg-primary/10">
+          TAG
+        </span>
+        <span id="modal-year" class="font-mono text-xs text-muted-foreground">
+          2026
+        </span>
+      </div>
+
+      <h2 id="modal-title" class="mt-3 text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+        Project Name
+      </h2>
+      <p id="modal-summary" class="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+        Project Summary
+      </p>
+
+      <!-- Mockup Banner Preview -->
+      <div class="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted/40 relative">
+        <img
+          id="modal-image"
+          src=""
+          alt="Project architecture preview"
+          class="size-full object-cover object-top"
+        />
+      </div>
+
+      <!-- Metadata Pills Grid -->
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 border-y border-border">
+        <div>
+          <span class="font-mono text-[10px] text-muted-foreground uppercase">{data.work.detail.type}</span>
+          <p id="modal-meta-type" class="font-semibold text-xs text-foreground mt-0.5"></p>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-muted-foreground uppercase">{data.work.detail.role}</span>
+          <p id="modal-meta-role" class="font-semibold text-xs text-foreground mt-0.5"></p>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-muted-foreground uppercase">{data.work.detail.status}</span>
+          <p id="modal-meta-status" class="font-semibold text-xs text-emerald-400 mt-0.5"></p>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-muted-foreground uppercase">{data.work.detail.highlight}</span>
+          <p id="modal-meta-highlight" class="font-semibold text-xs text-primary mt-0.5"></p>
+        </div>
+      </div>
+
+      <!-- Section: System Overview -->
+      <div class="mt-8">
+        <h4 class="font-mono text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2">
+          <span class="h-px w-6 bg-primary"></span>
+          {data.work.detail.overview}
+        </h4>
+        <p id="modal-overview" class="mt-3 text-sm leading-relaxed text-foreground/90"></p>
+      </div>
+
+      <!-- Section: Key Architectural Decisions -->
+      <div class="mt-8">
+        <h4 class="font-mono text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2">
+          <span class="h-px w-6 bg-primary"></span>
+          {data.work.detail.decisions}
+        </h4>
+        <div id="modal-decisions" class="mt-4 space-y-3">
+          <!-- Inserted by JS -->
+        </div>
+      </div>
+
+      <!-- Section: Engineering Challenges -->
+      <div class="mt-8">
+        <h4 class="font-mono text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2">
+          <span class="h-px w-6 bg-primary"></span>
+          {data.work.detail.challenges}
+        </h4>
+        <ul id="modal-challenges" class="mt-3 space-y-2 text-sm text-foreground/90">
+          <!-- Inserted by JS -->
+        </ul>
+      </div>
+
+      <!-- Section: Tech Stack Badges -->
+      <div class="mt-8">
+        <h4 class="font-mono text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2">
+          <span class="h-px w-6 bg-primary"></span>
+          {data.work.detail.stack}
+        </h4>
+        <div id="modal-stack" class="mt-3 flex flex-wrap gap-2">
+          <!-- Inserted by JS -->
+        </div>
+      </div>
+
+      <!-- Bottom Actions -->
+      <div class="mt-10 flex flex-wrap items-center gap-4 pt-6 border-t border-border">
+        <a
+          id="modal-github"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="brackets inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all hover:scale-[1.02]"
+        >
+          <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          </svg>
+          {data.work.detail.repo} ↗
+        </a>
+
+        <button
+          id="close-modal-bottom-btn"
+          type="button"
+          class="inline-flex items-center gap-1.5 px-4 py-3 font-mono text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+        >
+          ← {data.work.detail.back}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { portfolioData } from '../data/portfolioData';
+
+  const modalOverlay = document.getElementById('project-detail-modal');
+  const modalCard = document.getElementById('project-detail-card');
+  const closeModalBtn = document.getElementById('close-project-modal');
+  const closeBottomBtn = document.getElementById('close-modal-bottom-btn');
+
+  function closeModal() {
+    modalOverlay?.classList.add('opacity-0', 'pointer-events-none');
+    modalCard?.classList.remove('scale-100');
+    modalCard?.classList.add('scale-95');
+  }
+
+  function openModal(projectId: string) {
+    const lang = (document.documentElement.getAttribute('lang') || 'es') as 'en' | 'es';
+    const currentData = portfolioData[lang] || portfolioData.es;
+    const project = currentData.work.projects.find((p) => p.id === projectId);
+
+    if (!project) return;
+
+    // Populate elements
+    document.getElementById('modal-tag')!.textContent = project.tag;
+    document.getElementById('modal-year')!.textContent = project.meta.year;
+    document.getElementById('modal-title')!.textContent = project.name;
+    document.getElementById('modal-summary')!.textContent = project.summary;
+    (document.getElementById('modal-image') as HTMLImageElement).src = project.image;
+    (document.getElementById('modal-image') as HTMLImageElement).alt = project.name;
+
+    document.getElementById('modal-meta-type')!.textContent = project.meta.type;
+    document.getElementById('modal-meta-role')!.textContent = project.meta.role;
+    document.getElementById('modal-meta-status')!.textContent = project.meta.status;
+    document.getElementById('modal-meta-highlight')!.textContent = project.meta.highlight;
+
+    document.getElementById('modal-overview')!.textContent = project.overview;
+
+    // Populate decisions
+    const decisionsContainer = document.getElementById('modal-decisions')!;
+    decisionsContainer.innerHTML = project.decisions
+      .map(
+        (d) => `
+        <div class="rounded-lg border border-border bg-secondary/30 p-4">
+          <h5 class="font-semibold text-sm text-foreground flex items-center gap-2">
+            <span class="size-1.5 rounded-full bg-primary"></span>
+            ${d.title}
+          </h5>
+          <p class="mt-1 text-xs text-muted-foreground leading-relaxed">${d.body}</p>
+        </div>
+      `
+      )
+      .join('');
+
+    // Populate challenges
+    const challengesContainer = document.getElementById('modal-challenges')!;
+    challengesContainer.innerHTML = project.challenges
+      .map(
+        (c) => `
+        <li class="flex items-start gap-2.5">
+          <span class="text-primary font-mono text-xs mt-0.5">▸</span>
+          <span class="text-xs sm:text-sm text-muted-foreground leading-relaxed">${c}</span>
+        </li>
+      `
+      )
+      .join('');
+
+    // Populate stack
+    const stackContainer = document.getElementById('modal-stack')!;
+    stackContainer.innerHTML = project.stack
+      .map(
+        (s) => `
+        <span class="font-mono text-xs rounded-md border border-border bg-secondary/60 px-2.5 py-1 text-foreground/90">
+          ${s}
+        </span>
+      `
+      )
+      .join('');
+
+    // GitHub Link
+    (document.getElementById('modal-github') as HTMLAnchorElement).href = project.github;
+
+    // Show modal
+    modalOverlay?.classList.remove('opacity-0', 'pointer-events-none');
+    modalCard?.classList.remove('scale-95');
+    modalCard?.classList.add('scale-100');
+  }
+
+  // Listen to open-project-modal events
+  window.addEventListener('open-project-modal', ((e: CustomEvent) => {
+    if (e.detail?.id) openModal(e.detail.id);
+  }) as EventListener);
+
+  closeModalBtn?.addEventListener('click', closeModal);
+  closeBottomBtn?.addEventListener('click', closeModal);
+  modalOverlay?.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  // ESC key to close
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

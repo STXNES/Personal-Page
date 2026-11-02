@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FloatingControls from './FloatingControls.astro';
+import SectionMenuDrawer from './SectionMenuDrawer.astro';
+import PlayerCardModal from './PlayerCardModal.astro';
+import ProjectModal from './ProjectModal.astro';
+import Hero from './Hero.astro';
+import SelectedWork from './SelectedWork.astro';
+import Experience from './Experience.astro';
+import TechStack from './TechStack.astro';
+import Certifications from './Certifications.astro';
+import About from './About.astro';
+import Footer from './Footer.astro';
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'es' } = Astro.props;
+const data = portfolioData[lang];
+
+const pageTitle = lang === 'en'
+  ? "Axell Rojas — Systems Engineer & AI Infrastructure Architect"
+  : "Axell Rojas — Ingeniero de Sistemas & Arquitecto de Infraestructura e IA";
+
+const pageDesc = lang === 'en'
+  ? "Portfolio of Axell Rojas. Systems Engineering, Enterprise Cloud & Infrastructure (Windows Server 2022, Active Directory, VMware, Linux), and Applied Agentic AI (RAG, LangChain, n8n)."
+  : "Portafolio de Axell Rojas. Ingeniería de Sistemas, Infraestructura Empresarial & Cloud (Windows Server 2022, Active Directory, VMware, Linux) e IA Agéntica Aplicada (RAG, LangChain, n8n).";
+---
+
+<Layout title={pageTitle} description={pageDesc} lang={lang}>
+  <!-- Floating UI Navigation Controls -->
+  <FloatingControls currentLang={lang} />
+  
+  <!-- Slide-Out Section Menu Drawer -->
+  <SectionMenuDrawer currentLang={lang} />
+
+  <!-- Interactive Modals -->
+  <PlayerCardModal currentLang={lang} />
+  <ProjectModal currentLang={lang} />
+
+  <!-- Main Document Flow -->
+  <main class="relative z-10 w-full overflow-x-hidden">
+    <Hero currentLang={lang} />
+    <SelectedWork currentLang={lang} />
+    <Experience currentLang={lang} />
+    <TechStack currentLang={lang} />
+    <Certifications currentLang={lang} />
+    <About currentLang={lang} />
+  </main>
+
+  <!-- High-Tech System Footer -->
+  <Footer currentLang={lang} />
+</Layout>
+
+<script>
+  // Handle language toggle event
+  window.addEventListener('toggle-language', ((e: CustomEvent) => {
+    const targetLang = e.detail?.lang;
+    if (targetLang === 'en') {
+      window.location.href = '/en';
+    } else {
+      window.location.href = '/es';
+    }
+  }) as EventListener);
+</script>

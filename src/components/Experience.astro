@@ -1,0 +1,75 @@
+---
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  currentLang?: 'en' | 'es';
+}
+
+const { currentLang = 'es' } = Astro.props;
+const data = portfolioData[currentLang];
+---
+
+<section id="experience" class="relative scroll-mt-20 border-b border-border py-16 sm:py-24">
+  <div class="pointer-events-none absolute inset-0 bg-grid opacity-20"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-16">
+    <!-- Section Kicker Header -->
+    <div class="flex items-center gap-3">
+      <span class="h-px w-8 bg-primary"></span>
+      <span class="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
+        {data.experience.label}
+      </span>
+    </div>
+
+    <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+      Professional Background &amp; Mission-Critical Ops
+    </h2>
+
+    <div class="mt-12 space-y-12">
+      {data.experience.items.map((item) => (
+        <div class="grid grid-cols-1 gap-6 border-t border-dashed border-border pt-8 md:grid-cols-[260px_1fr] md:gap-12">
+          <!-- Left: Meta Info -->
+          <div>
+            <h3 class="text-xl font-bold text-foreground">
+              {item.role}
+            </h3>
+            <p class="mt-1 font-semibold text-primary text-sm">
+              {item.company}
+            </p>
+            <p class="mt-2 font-mono text-xs text-muted-foreground flex items-center gap-1.5">
+              <span class="size-1.5 rounded-full bg-primary/60"></span>
+              {item.period}
+            </p>
+          </div>
+
+          <!-- Right: Summary & Bullets -->
+          <div>
+            <p class="text-sm sm:text-base font-medium text-foreground/90 leading-relaxed">
+              {item.summary}
+            </p>
+
+            <ul class="mt-4 space-y-2.5">
+              {item.bullets.map((b) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-primary font-mono text-xs mt-1">▸</span>
+                  <span class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {b}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Tags -->
+            <div class="mt-6 flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <span class="font-mono text-[11px] rounded-full border border-border bg-card/60 px-3 py-0.5 text-muted-foreground">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

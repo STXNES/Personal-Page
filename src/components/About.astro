@@ -1,0 +1,119 @@
+---
+import { portfolioData } from '../data/portfolioData';
+
+interface Props {
+  currentLang?: 'en' | 'es';
+}
+
+const { currentLang = 'es' } = Astro.props;
+const data = portfolioData[currentLang];
+---
+
+<section id="about" class="relative scroll-mt-20 border-b border-border py-16 sm:py-24">
+  <div class="pointer-events-none absolute inset-0 bg-grid opacity-20"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-16">
+    <!-- Section Kicker Header -->
+    <div class="flex items-center gap-3">
+      <span class="h-px w-8 bg-primary"></span>
+      <span class="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
+        {data.about.label}
+      </span>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Bio Narrative (7 cols) -->
+      <div class="lg:col-span-7 space-y-5">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+          Discipline from High-Precision Tech, Vision for Autonomous Systems
+        </h2>
+
+        <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
+          {data.about.p1}
+        </p>
+
+        <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
+          {data.about.p2}
+        </p>
+
+        <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
+          {data.about.p3}
+        </p>
+
+        <!-- Languages & Location Bar -->
+        <div class="mt-8 pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-3.5 rounded-lg border border-border bg-card/40">
+            <span class="font-mono text-[10px] text-muted-foreground uppercase">LANGUAGES</span>
+            <p class="font-semibold text-xs text-foreground mt-1">Spanish: <span class="font-normal text-muted-foreground">Native Speaker</span></p>
+            <p class="font-semibold text-xs text-foreground mt-0.5">English: <span class="font-normal text-muted-foreground">B1 Intermediate (Technical)</span></p>
+          </div>
+
+          <div class="p-3.5 rounded-lg border border-border bg-card/40">
+            <span class="font-mono text-[10px] text-muted-foreground uppercase">LOCATION &amp; AVAILABILITY</span>
+            <p class="font-semibold text-xs text-foreground mt-1">Naranjo, Alajuela, Costa Rica</p>
+            <p class="font-mono text-[11px] text-emerald-400 mt-0.5 flex items-center gap-1.5">
+              <span class="size-1.5 rounded-full bg-emerald-500"></span>
+              On-Site / Hybrid / Remote
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: High-Impact Quote & Metrics (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Quote Box -->
+        <div class="brackets relative rounded-2xl border border-primary/40 bg-card/80 p-8 backdrop-blur-md shadow-xl">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="text-primary/70">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+          </svg>
+
+          <p class="mt-4 text-lg sm:text-xl font-bold leading-snug text-foreground">
+            {data.about.quote}
+          </p>
+
+          <div class="mt-6 flex items-center gap-3 pt-4 border-t border-border">
+            <div class="size-10 rounded-full overflow-hidden border border-primary/50">
+              <img src="/images/avatar.jpg" alt="Axell Rojas" class="size-full object-cover" />
+            </div>
+            <div>
+              <p class="font-bold text-xs text-foreground">Axell Rojas</p>
+              <p class="font-mono text-[10px] text-primary">Systems Engineer · Intel Alumni</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="grid grid-cols-3 gap-3">
+          {data.about.stats.map((stat) => (
+            <div class="rounded-xl border border-border bg-card/50 p-4 text-center">
+              <p class="font-mono text-xl sm:text-2xl font-black text-primary">{stat.value}</p>
+              <p class="font-mono text-[10px] text-muted-foreground mt-1 leading-tight">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Action Button -->
+        <button
+          id="open-dossier-about"
+          type="button"
+          class="w-full flex items-center justify-center gap-2 rounded-xl border border-border bg-card/90 py-3.5 px-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground hover:border-primary/60 hover:text-primary transition-all shadow-sm cursor-pointer"
+        >
+          <span>{data.playerCard.viewProfile}</span>
+          <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const openAboutDossier = document.getElementById('open-dossier-about');
+  openAboutDossier?.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('open-dossier'));
+  });
+</script>
