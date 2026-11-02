@@ -7,6 +7,14 @@ interface Props {
 
 const { currentLang = 'es' } = Astro.props;
 const data = portfolioData[currentLang];
+
+const heroProject1Desc = currentLang === 'en'
+  ? "Enterprise RAG Q&A agent over internal PDFs & CSVs with FAISS vector index and Groq/Gemini."
+  : "Agente RAG para consulta de PDFs y CSVs con citas exactas, índice vectorial FAISS y Groq/Gemini.";
+
+const heroProject2Desc = currentLang === 'en'
+  ? "VMware enterprise topology: Windows Server 2022 AD DS Domain Controller, OUs, and security GPOs."
+  : "Laboratorio VMware: Controlador de dominio AD DS, OUs jerárquicas, GPOs de seguridad y DNS/DHCP.";
 ---
 
 <section id="top" class="relative min-h-screen overflow-hidden border-b border-border pt-24 pb-16 lg:py-0 flex items-center">
@@ -74,7 +82,7 @@ const data = portfolioData[currentLang];
         </h1>
 
         <!-- Subtitle Paragraph -->
-        <p class="mt-6 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal max-w-xl">
+        <p class="mt-5 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal max-w-xl">
           {data.hero.subtitle}
         </p>
 
@@ -115,7 +123,7 @@ const data = portfolioData[currentLang];
         </div>
 
         <!-- Quick Spec Stats Row -->
-        <div class="mt-12 grid grid-cols-3 gap-4 border-t border-border pt-6 max-w-lg">
+        <div class="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6 max-w-lg">
           <div>
             <p class="font-mono text-xl sm:text-2xl font-black text-foreground">2+ Yrs</p>
             <p class="font-mono text-[11px] text-muted-foreground tracking-tight mt-0.5">Intel Cleanroom Ops</p>
@@ -149,8 +157,8 @@ const data = portfolioData[currentLang];
             <h3 class="mt-2.5 text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
               Alura Agente Inteligente
             </h3>
-            <p class="mt-1 text-xs text-muted-foreground line-clamp-2">
-              RAG Q&amp;A agent for enterprise documents (PDF/CSV) with exact source citations, FAISS vector store &amp; Groq Llama 3.3.
+            <p class="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+              {heroProject1Desc}
             </p>
             <div class="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] font-semibold text-primary uppercase tracking-wider">
               <span>View architectural lab</span>
@@ -175,8 +183,8 @@ const data = portfolioData[currentLang];
             <h3 class="mt-2.5 text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
               Windows Server 2022 Enterprise Lab
             </h3>
-            <p class="mt-1 text-xs text-muted-foreground line-clamp-2">
-              VMware Workstation Pro enterprise topology: AD DS Domain Controller, OUs, GPOs, DNS/DHCP.
+            <p class="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+              {heroProject2Desc}
             </p>
             <div class="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] font-semibold text-primary uppercase tracking-wider">
               <span>View infrastructure lab</span>

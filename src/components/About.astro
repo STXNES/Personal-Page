@@ -22,7 +22,7 @@ const data = portfolioData[currentLang];
     </div>
 
     <!-- Main Grid: items-stretch for 100% Vertical Symmetry -->
-    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
       
       <!-- Left Column: Bio Narrative (7 cols) -->
       <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
@@ -37,10 +37,6 @@ const data = portfolioData[currentLang];
 
           <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
             {data.about.p2}
-          </p>
-
-          <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
-            {data.about.p3}
           </p>
         </div>
 
@@ -68,7 +64,7 @@ const data = portfolioData[currentLang];
 
       <!-- Right Column: Quote Card, Metrics, & Aligned Action Card (5 cols) -->
       <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
-        <!-- Quote Box (Removed "Intel Alumni", clean Systems Engineer title) -->
+        <!-- Quote Box -->
         <div class="brackets relative rounded-2xl border border-primary/40 bg-card/85 p-6 sm:p-7 backdrop-blur-md shadow-lg flex-1 flex flex-col justify-between">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-primary/70">
