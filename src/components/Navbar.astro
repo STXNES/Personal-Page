@@ -8,61 +8,61 @@ const { currentLang = 'es' } = Astro.props;
 const labels = {
   es: {
     home: "Inicio",
-    work: "Arquitectura & Labs",
-    experience: "Intel Experience",
+    work: "Proyectos",
+    experience: "Experiencia",
     terminal: "Terminal",
-    stack: "Habilidades",
+    stack: "Stack",
     certifications: "Certificaciones",
     about: "Sobre Mí",
-    cv: "Descargar CV (PDF)",
+    cv: "CV (PDF)",
     switchLang: "English (EN)",
     targetLang: "en"
   },
   en: {
     home: "Home",
-    work: "Architecture & Labs",
-    experience: "Intel Experience",
+    work: "Projects",
+    experience: "Experience",
     terminal: "Terminal",
-    stack: "Skills",
+    stack: "Stack",
     certifications: "Certifications",
     about: "About",
-    cv: "Download CV (PDF)",
+    cv: "CV (PDF)",
     switchLang: "Español (ES)",
     targetLang: "es"
   }
 }[currentLang];
 ---
 
-<header class="sticky top-0 z-50 glass-nav transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+<header class="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-4 sm:px-6 pointer-events-none transition-all duration-300">
+  <div class="max-w-7xl mx-auto glass-nav rounded-2xl px-4 sm:px-6 h-16 flex items-center justify-between pointer-events-auto border border-slate-800/80 shadow-2xl shadow-black/50 backdrop-blur-xl">
     <!-- Brand / Identifier -->
-    <a href="#hero" class="flex items-center gap-3 group">
-      <div class="size-9 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center font-bold text-slate-950 text-sm shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+    <a href="#hero" class="flex items-center gap-3 group shrink-0">
+      <div class="size-9 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center font-bold text-slate-950 text-sm shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform font-mono">
         AR
       </div>
-      <div>
-        <span class="font-bold tracking-tight text-foreground text-sm sm:text-base group-hover:text-primary transition-colors">Axell Rojas</span>
-        <span class="hidden md:inline-block text-xs text-muted-foreground ml-2 border-l border-border pl-2 font-mono">sysadmin@infrastructure</span>
+      <div class="flex items-center">
+        <span class="font-bold tracking-tight text-white text-sm sm:text-base group-hover:text-cyan-400 transition-colors">Axell Rojas</span>
+        <span class="hidden xl:inline-block text-xs text-slate-400 ml-2 border-l border-slate-800 pl-2 font-mono">sysadmin@infrastructure</span>
       </div>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="hidden lg:flex items-center gap-1 bg-card/60 p-1 rounded-full border border-border text-xs font-medium backdrop-blur-md">
-      <a href="#hero" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.home}</a>
-      <a href="#projects" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.work}</a>
-      <a href="#experience" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.experience}</a>
-      <a href="#terminal" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.terminal}</a>
-      <a href="#stack" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.stack}</a>
-      <a href="#certifications" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.certifications}</a>
-      <a href="#about" class="px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">{labels.about}</a>
+    <!-- Desktop Navigation Links (Spacious Floating Pill) -->
+    <nav class="hidden lg:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800/80 text-xs font-medium backdrop-blur-md">
+      <a href="#hero" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.home}</a>
+      <a href="#projects" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.work}</a>
+      <a href="#experience" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.experience}</a>
+      <a href="#terminal" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.terminal}</a>
+      <a href="#stack" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.stack}</a>
+      <a href="#certifications" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.certifications}</a>
+      <a href="#about" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors">{labels.about}</a>
     </nav>
 
     <!-- Right-Side Action Controls -->
-    <div class="flex items-center gap-2 sm:gap-3">
+    <div class="flex items-center gap-2.5 shrink-0">
       <!-- Language Switcher Pill -->
       <a
         href={currentLang === 'es' ? '/en' : '/es'}
-        class="flex items-center gap-1.5 rounded-lg border border-border bg-card/60 px-2.5 py-1.5 text-xs font-mono font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
+        class="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/90 px-3 py-2 text-xs font-mono font-medium text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
         title={labels.switchLang}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -77,7 +77,7 @@ const labels = {
       <a
         href="/Axell_Rojas_CV.pdf"
         download="Axell_Rojas_CV.pdf"
-        class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-primary hover:bg-primary/90 text-primary-foreground px-3.5 py-1.5 rounded-lg transition-all shadow-sm shadow-primary/20 cursor-pointer"
+        class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:brightness-110 text-slate-950 px-3.5 py-2 rounded-xl transition-all shadow-md shadow-cyan-500/20 cursor-pointer"
       >
         <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         <span>{labels.cv}</span>
@@ -88,7 +88,7 @@ const labels = {
         id="navbar-mobile-toggle"
         type="button"
         aria-label="Abrir menú"
-        class="lg:hidden flex size-9 items-center justify-center rounded-lg border border-border bg-card/60 text-foreground"
+        class="lg:hidden flex size-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-white"
       >
         <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
@@ -96,19 +96,19 @@ const labels = {
   </div>
 
   <!-- Mobile Dropdown Menu -->
-  <div id="navbar-mobile-menu" class="hidden lg:hidden border-b border-border bg-card/95 backdrop-blur-xl px-6 py-4 space-y-2">
-    <a href="#hero" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.home}</a>
-    <a href="#projects" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.work}</a>
-    <a href="#experience" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.experience}</a>
-    <a href="#terminal" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.terminal}</a>
-    <a href="#stack" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.stack}</a>
-    <a href="#certifications" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.certifications}</a>
-    <a href="#about" class="block py-2 text-sm text-foreground hover:text-primary transition-colors">{labels.about}</a>
-    <div class="pt-3 border-t border-border">
+  <div id="navbar-mobile-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 rounded-2xl border border-slate-800 bg-slate-950/95 backdrop-blur-xl px-6 py-4 space-y-2 pointer-events-auto shadow-2xl">
+    <a href="#hero" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.home}</a>
+    <a href="#projects" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.work}</a>
+    <a href="#experience" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.experience}</a>
+    <a href="#terminal" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.terminal}</a>
+    <a href="#stack" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.stack}</a>
+    <a href="#certifications" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.certifications}</a>
+    <a href="#about" class="block py-2 text-sm text-slate-300 hover:text-cyan-400 transition-colors">{labels.about}</a>
+    <div class="pt-3 border-t border-slate-800">
       <a
         href="/Axell_Rojas_CV.pdf"
         download="Axell_Rojas_CV.pdf"
-        class="w-full flex items-center justify-center gap-2 text-xs font-semibold bg-primary text-primary-foreground py-2.5 rounded-lg"
+        class="w-full flex items-center justify-center gap-2 text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 py-2.5 rounded-xl font-bold"
       >
         <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         <span>{labels.cv}</span>

@@ -26,90 +26,156 @@ const kSub = isEn
     </p>
   </div>
 
-  <!-- 2 Column Layout: Education vs Certifications -->
+  <!-- 2 Column Layout: Education vs Certifications (Balanced 3-Row Symmetry) -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
     
-    <!-- Academic Education (Col 1 - 5 cols) -->
+    <!-- Academic Education (Col 1 - 5 cols: Exactly 3 Symmetrical Cards) -->
     <div class="lg:col-span-5 space-y-4">
       <h3 class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase flex items-center gap-2">
         <span class="size-1.5 rounded-full bg-cyan-400"></span>
         {data.certifications.educationTitle}
       </h3>
 
-      <div class="space-y-3.5">
-        {data.certifications.education.map((edu) => (
-          <div class="glass-card rounded-2xl p-5 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">
-                {edu.period}
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <span class="size-1 rounded-full bg-emerald-400"></span>
-                {edu.status}
-              </span>
-            </div>
-            <h4 class="text-base font-bold text-white">
-              {edu.degree}
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Degree 1 -->
+        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between h-[154px] hover:border-cyan-500/40 transition-colors">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider truncate">
+              {data.certifications.education[0]?.period || (isEn ? "Expected 2029" : "Esperado 2029")}
+            </span>
+            <span class="font-mono text-[10px] text-slate-500 shrink-0">Fidélitas</span>
+          </div>
+
+          <div class="my-auto py-1">
+            <h4 class="text-sm sm:text-base font-bold text-white leading-snug line-clamp-2">
+              {data.certifications.education[0]?.degree}
             </h4>
-            <p class="text-xs text-slate-400 font-mono">
-              {edu.institution}
+            <p class="text-xs text-slate-400 font-mono mt-0.5 truncate">
+              {data.certifications.education[0]?.institution}
             </p>
           </div>
-        ))}
-      </div>
 
-      <!-- Featured Badge Card (ONE AI / Tech AI Builder) -->
-      <div class="glass-card rounded-2xl p-5 border-cyan-500/30 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-cyan-950/20">
-        <div class="flex items-center gap-4">
-          <div class="size-16 shrink-0 rounded-xl overflow-hidden border border-cyan-500/30 bg-slate-950/80 p-2 flex items-center justify-center">
-            <img
-              src="/images/badge-rag-agente-ia.png"
-              alt="Badge RAG Agente Inteligente"
-              class="size-full object-contain"
-            />
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800/60">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+              <span class="size-1.5 rounded-full bg-emerald-400"></span>
+              {data.certifications.education[0]?.status}
+            </span>
           </div>
-          <div>
-            <span class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider">SPECIALIZED CREDENTIAL</span>
-            <h5 class="font-bold text-sm text-white mt-0.5">Alura Latam × Oracle (ONE)</h5>
-            <p class="font-mono text-xs text-slate-400 mt-0.5">Tech AI Builder &amp; RAG Agent Immersion</p>
+        </div>
+
+        <!-- Degree 2 -->
+        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between h-[154px] hover:border-cyan-500/40 transition-colors">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider truncate">
+              {data.certifications.education[1]?.period || (isEn ? "Completed" : "Completado")}
+            </span>
+            <span class="font-mono text-[10px] text-slate-500 shrink-0">Fidélitas</span>
+          </div>
+
+          <div class="my-auto py-1">
+            <h4 class="text-sm sm:text-base font-bold text-white leading-snug line-clamp-2">
+              {data.certifications.education[1]?.degree}
+            </h4>
+            <p class="text-xs text-slate-400 font-mono mt-0.5 truncate">
+              {data.certifications.education[1]?.institution}
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800/60">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+              <span class="size-1.5 rounded-full bg-emerald-400"></span>
+              {data.certifications.education[1]?.status}
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 3: Symmetrical Specialized Credential with Badge -->
+        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between h-[154px] hover:border-cyan-500/40 transition-colors border-cyan-500/30">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider truncate">
+              SPECIALIZED CREDENTIAL
+            </span>
+            <span class="font-mono text-[10px] text-slate-500 shrink-0">2026</span>
+          </div>
+
+          <div class="my-auto py-1 flex items-center justify-between gap-3">
+            <div class="min-w-0">
+              <h4 class="text-sm sm:text-base font-bold text-white leading-snug line-clamp-2">
+                Tech AI Builder &amp; RAG Immersion
+              </h4>
+              <p class="text-xs text-slate-400 font-mono mt-0.5 truncate">
+                Alura Latam × Oracle (ONE)
+              </p>
+            </div>
+            <div class="size-10 shrink-0 rounded-lg overflow-hidden border border-cyan-500/30 bg-slate-950/80 p-1 flex items-center justify-center">
+              <img
+                src="/images/badge-rag-agente-ia.png"
+                alt="Badge RAG Agente Inteligente"
+                class="size-full object-contain"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800/60">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+              <span class="size-1.5 rounded-full bg-emerald-400"></span>
+              {isEn ? "Completed" : "Completado"}
+            </span>
+            <span class="text-[10px] font-mono text-cyan-400">Oracle Certified</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Professional Certifications Grid (Col 2 - 7 cols) -->
+    <!-- Professional Certifications Grid (Col 2 - 7 cols: 3 Rows of 2 Symmetrical Cards) -->
     <div class="lg:col-span-7 space-y-4">
       <h3 class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase flex items-center gap-2">
         <span class="size-1.5 rounded-full bg-cyan-400"></span>
         {data.certifications.certsTitle}
       </h3>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {data.certifications.items.map((cert) => {
           const isPending = cert.status.toLowerCase().includes('programad') || cert.status.toLowerCase().includes('schedul');
-          const statusBadgeClass = isPending
-            ? 'bg-amber-500/10 text-amber-300 border-amber-500/20'
-            : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+          const isInProgress = cert.status.toLowerCase().includes('progres') || cert.status.toLowerCase().includes('progress');
+          
+          let statusBadgeClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+          let dotClass = 'bg-emerald-400';
+          
+          if (isPending) {
+            statusBadgeClass = 'bg-amber-500/10 text-amber-300 border-amber-500/20';
+            dotClass = 'bg-amber-400';
+          } else if (isInProgress) {
+            statusBadgeClass = 'bg-blue-500/10 text-blue-300 border-blue-500/20';
+            dotClass = 'bg-blue-400';
+          }
+
+          // Format clean single-line kicker
+          let issuerKicker = cert.issuer;
+          if (issuerKicker.includes('ONE AI')) issuerKicker = 'ALURA × ORACLE (ONE)';
+          if (issuerKicker.includes('Cisco')) issuerKicker = 'CISCO ACADEMY';
+          if (issuerKicker.includes('Microsoft / DataCamp')) issuerKicker = 'MICROSOFT / DATACAMP';
 
           return (
-            <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 hover:border-cyan-500/40 transition-colors">
-              <div>
-                <div class="flex items-center justify-between">
-                  <span class="font-mono text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">
-                    {cert.issuer}
-                  </span>
-                  <span class="font-mono text-[10px] text-slate-500">
-                    {cert.year}
-                  </span>
-                </div>
-                <h4 class="mt-2 text-sm font-semibold text-white leading-snug">
+            <div class="glass-card rounded-2xl p-5 flex flex-col justify-between h-[154px] hover:border-cyan-500/40 transition-colors">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-wider truncate">
+                  {issuerKicker}
+                </span>
+                <span class="font-mono text-[10px] text-slate-500 shrink-0">
+                  {cert.year === 'Completado' || cert.year === 'Completed' ? '2025' : cert.year}
+                </span>
+              </div>
+
+              <div class="my-auto py-1">
+                <h4 class="text-sm font-semibold text-white leading-snug line-clamp-2">
                   {cert.title}
                 </h4>
               </div>
 
               <div class="flex items-center justify-between pt-2 border-t border-slate-800/60">
                 <span class={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono border ${statusBadgeClass}`}>
-                  <span class={`size-1 rounded-full ${isPending ? 'bg-amber-400' : 'bg-emerald-400'}`}></span>
+                  <span class={`size-1.5 rounded-full ${dotClass}`}></span>
                   {cert.status}
                 </span>
               </div>
