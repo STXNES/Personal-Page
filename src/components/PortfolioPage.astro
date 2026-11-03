@@ -1,16 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FloatingControls from './FloatingControls.astro';
-import SectionMenuDrawer from './SectionMenuDrawer.astro';
-import PlayerCardModal from './PlayerCardModal.astro';
-import ProjectModal from './ProjectModal.astro';
+import Navbar from './Navbar.astro';
 import Hero from './Hero.astro';
 import SelectedWork from './SelectedWork.astro';
 import Experience from './Experience.astro';
+import Terminal from './Terminal.astro';
 import TechStack from './TechStack.astro';
 import Certifications from './Certifications.astro';
 import About from './About.astro';
 import Footer from './Footer.astro';
+import PlayerCardModal from './PlayerCardModal.astro';
+import ProjectModal from './ProjectModal.astro';
 import { portfolioData } from '../data/portfolioData';
 
 interface Props {
@@ -21,47 +21,33 @@ const { lang = 'es' } = Astro.props;
 const data = portfolioData[lang];
 
 const pageTitle = lang === 'en'
-  ? "Axell Rojas — Systems Engineer & AI Infrastructure Architect"
-  : "Axell Rojas — Ingeniero de Sistemas & Arquitecto de Infraestructura e IA";
+  ? "Axell Rojas — Systems & Cloud Infrastructure Specialist"
+  : "Axell Rojas — Especialista en Sistemas, Infraestructura Cloud & Automatización";
 
 const pageDesc = lang === 'en'
-  ? "Portfolio of Axell Rojas. Systems Engineering, Enterprise Cloud & Infrastructure (Windows Server 2022, Active Directory, VMware, Linux), and Applied Agentic AI (RAG, LangChain, n8n)."
-  : "Portafolio de Axell Rojas. Ingeniería de Sistemas, Infraestructura Empresarial & Cloud (Windows Server 2022, Active Directory, VMware, Linux) e IA Agéntica Aplicada (RAG, LangChain, n8n).";
+  ? "Systems Engineer & Infrastructure Specialist. Windows Server 2022 AD DS, Linux Hardening (CIS L2), DevOps pipelines, and 2+ years of critical 24/7 manufacturing operations at Intel Corporation."
+  : "Ingeniero de Sistemas y Especialista en Infraestructura. Windows Server 2022 AD DS, Endurecimiento Linux (CIS L2), pipelines DevOps y 2+ años de operaciones críticas 24/7 en Intel Corporation.";
 ---
 
 <Layout title={pageTitle} description={pageDesc} lang={lang}>
-  <!-- Floating UI Navigation Controls -->
-  <FloatingControls currentLang={lang} />
-  
-  <!-- Slide-Out Section Menu Drawer -->
-  <SectionMenuDrawer currentLang={lang} />
+  <!-- Sticky Frosted Glass Top Navigation -->
+  <Navbar currentLang={lang} />
 
-  <!-- Interactive Modals -->
-  <PlayerCardModal currentLang={lang} />
+  <!-- Interactive Architecture & Dossier Modals -->
   <ProjectModal currentLang={lang} />
+  <PlayerCardModal currentLang={lang} />
 
-  <!-- Main Document Flow -->
-  <main class="relative z-10 w-full overflow-x-hidden">
+  <!-- Main Content Stream Container (Executive Bento Layout) -->
+  <main class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
     <Hero currentLang={lang} />
     <SelectedWork currentLang={lang} />
     <Experience currentLang={lang} />
+    <Terminal currentLang={lang} />
     <TechStack currentLang={lang} />
     <Certifications currentLang={lang} />
     <About currentLang={lang} />
   </main>
 
-  <!-- High-Tech System Footer -->
+  <!-- Systems Footer -->
   <Footer currentLang={lang} />
 </Layout>
-
-<script>
-  // Handle language toggle event
-  window.addEventListener('toggle-language', ((e: CustomEvent) => {
-    const targetLang = e.detail?.lang;
-    if (targetLang === 'en') {
-      window.location.href = '/en';
-    } else {
-      window.location.href = '/es';
-    }
-  }) as EventListener);
-</script>

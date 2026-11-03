@@ -7,217 +7,153 @@ interface Props {
 
 const { currentLang = 'es' } = Astro.props;
 const data = portfolioData[currentLang];
+const isEn = currentLang === 'en';
 
-const heroProject1Desc = currentLang === 'en'
-  ? "Enterprise RAG Q&A agent over internal PDFs & CSVs with FAISS vector index and Groq/Gemini."
-  : "Agente RAG para consulta de PDFs y CSVs con citas exactas, índice vectorial FAISS y Groq/Gemini.";
+const availabilityText = isEn
+  ? "Available for IT Support L2/L3 · SysAdmin · Cloud Infrastructure"
+  : "Disponible para Soporte TI L2/L3 · SysAdmin · Infraestructura Cloud";
 
-const heroProject2Desc = currentLang === 'en'
-  ? "VMware enterprise topology: Windows Server 2022 AD DS Domain Controller, OUs, and security GPOs."
-  : "Laboratorio VMware: Controlador de dominio AD DS, OUs jerárquicas, GPOs de seguridad y DNS/DHCP.";
+const cvHref = "/Axell_Rojas_CV.pdf";
 ---
 
-<section id="top" class="relative min-h-screen lg:min-h-0 lg:h-screen lg:max-h-[960px] overflow-hidden border-b border-border pt-24 pb-12 lg:pt-24 lg:pb-8 flex flex-col justify-center">
-  <!-- Cyber Grid Background -->
-  <div class="pointer-events-none absolute inset-0 bg-grid opacity-35"></div>
-  
-  <!-- Radial Glow Lighting Accents -->
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,var(--primary),transparent_55%)] opacity-[0.15]"></div>
-  <div class="pointer-events-none absolute -left-24 top-8 size-[520px] rounded-full bg-[radial-gradient(circle,var(--background)_42%,transparent_72%)]"></div>
-  <div class="pointer-events-none absolute -right-20 top-1/4 size-[520px] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--primary),transparent_80%)_0%,transparent_70%)]"></div>
+<section id="hero" class="relative pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-800/80">
+  <!-- Subtle Ambient Glow -->
+  <div class="pointer-events-none absolute -top-20 right-1/4 -z-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl"></div>
+  <div class="pointer-events-none absolute top-40 -left-10 -z-10 h-64 w-64 rounded-full bg-blue-600/10 blur-3xl"></div>
 
-  <!-- Ambient Vector HUD Tech Geometry -->
-  <svg aria-hidden="true" class="pointer-events-none absolute inset-0 z-0 h-full w-full text-muted-foreground opacity-20" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" fill="none">
-    <defs>
-      <pattern id="hero-dots" width="20" height="20" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="1.5" fill="currentColor"></circle>
-      </pattern>
-    </defs>
-    <rect x="60" y="50" width="220" height="130" fill="url(#hero-dots)" opacity="0.4"></rect>
-    <rect x="960" y="460" width="180" height="140" fill="url(#hero-dots)" opacity="0.3"></rect>
-    <g fill="currentColor" opacity="0.25">
-      <path d="M540 40 L650 55 L590 140 L550 115 Z"></path>
-      <path d="M910 240 L995 260 L965 340 L920 315 Z"></path>
-      <path d="M120 500 L200 520 L170 580 L130 550 Z"></path>
-    </g>
-  </svg>
-
-  <!-- Energy Ribbon behind Portrait: shifted slightly for optimal photo visibility -->
-  <div aria-hidden="true" class="pointer-events-none absolute left-[62%] top-1/2 z-0 hidden h-[140%] w-28 -translate-x-1/2 -translate-y-1/2 -rotate-[20deg] bg-gradient-to-b from-primary/70 via-primary to-primary/70 opacity-50 blur-[1px] lg:block"></div>
-
-  <!-- Portrait Photo: Positioned and scaled so Axell is clearly visible, proportional and not oversized -->
-  <div class="pointer-events-none absolute bottom-0 left-[54%] hidden h-[84%] max-h-[640px] xl:max-h-[700px] -translate-x-1/2 lg:block z-0">
-    <div class="relative h-full">
-      <img
-        src="/images/axell.jpg"
-        alt="Axell Rojas"
-        class="h-full w-auto max-w-none select-none object-cover opacity-95 drop-shadow-2xl"
-        style="mask-image: linear-gradient(to top, transparent 1%, black 18%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 90%, transparent 100%); mask-composite: intersect;"
-      />
-      <!-- Subtle warm ambient lighting overlay -->
-      <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-amber-500/10 pointer-events-none"></div>
-    </div>
+  <!-- Availability Status Pill -->
+  <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-6 shadow-sm">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    {availabilityText}
   </div>
 
-  <!-- Main Hero Layout Container -->
-  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-16 w-full my-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      
-      <!-- Left Column: Bio & Core Info (7 cols) -->
-      <div class="lg:col-span-7 max-w-2xl">
-        <!-- Role Kicker: Generous top breathing room without blowing up viewport height -->
-        <div class="inline-flex items-center gap-2.5 rounded-full border border-primary/40 bg-card/85 px-3.5 py-1 backdrop-blur-md shadow-sm mb-2.5">
-          <span class="size-2 rounded-full bg-primary animate-pulse"></span>
-          <span class="font-mono text-xs font-semibold tracking-wider text-primary uppercase">
-            {data.hero.role}
-          </span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <!-- Left Column: Executive Headline & Narrative -->
+    <div class="lg:col-span-7 space-y-6">
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+        {isEn ? (
+          <>
+            Systems, Networks &amp; Cloud Infrastructure with
+            <span class="gradient-text block mt-1">Focus on Security &amp; Automation.</span>
+          </>
+        ) : (
+          <>
+            Sistemas, Redes e Infraestructura Cloud con
+            <span class="gradient-text block mt-1">Enfoque en Seguridad &amp; Automatización.</span>
+          </>
+        )}
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+        {isEn ? (
+          <>
+            Specialist in <span class="text-cyan-400 font-medium">Windows Server 2022 &amp; Active Directory</span> administration, <span class="text-cyan-400 font-medium">Linux server hardening (CIS Benchmark L2)</span>, and <span class="text-cyan-400 font-medium">DevOps &amp; Agentic AI (RAG / n8n)</span> pipelines. Trained in 24/7 mission-critical operations under strict SLAs at <strong class="text-white">Intel Corporation</strong>.
+          </>
+        ) : (
+          <>
+            Especialista en administración de <span class="text-cyan-400 font-medium">Windows Server 2022 &amp; Active Directory</span>, bastionado de <span class="text-cyan-400 font-medium">servidores Linux (CIS Benchmark L2)</span>, y canalizaciones <span class="text-cyan-400 font-medium">DevOps &amp; IA Agéntica (RAG / n8n)</span>. Formado en operaciones críticas 24/7 bajo estrictos SLAs en <strong class="text-white">Intel Corporation</strong>.
+          </>
+        )}
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href="#projects"
+          class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:brightness-110 transition shadow-lg shadow-cyan-500/20 flex items-center gap-2 text-sm"
+        >
+          {isEn ? "Explore Architecture Labs" : "Explorar Laboratorios de Arquitectura"}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/axro"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-3 rounded-xl glass-card font-semibold text-white hover:text-cyan-400 transition flex items-center gap-2 text-sm"
+        >
+          <svg class="w-4 h-4 text-cyan-400 fill-current" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          LinkedIn
+        </a>
+
+        <a
+          href={cvHref}
+          download="Axell_Rojas_CV.pdf"
+          class="px-5 py-3 rounded-xl glass-card font-semibold text-slate-300 hover:text-white transition flex items-center gap-2 text-sm font-mono"
+        >
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          CV (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Profile Identity & 4 Value Metric Cards -->
+    <div class="lg:col-span-5 space-y-4">
+      <!-- Profile Header Strip -->
+      <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+        <div class="relative size-16 shrink-0 rounded-xl overflow-hidden border-2 border-cyan-500/40 shadow-md shadow-cyan-500/20">
+          <img
+            src="/images/axell.jpg"
+            alt="Axell Rojas"
+            class="size-full object-cover object-top"
+          />
         </div>
-
-        <!-- Main Punchy Title: Crisp, vibrant & 100% sharp text (no blurry transparent gradient clipping) -->
-        <h1 class="mt-3.5 text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] text-foreground">
-          {data.hero.titleLine1}{" "}
-          <span class="text-[#a78bfa] font-extrabold drop-shadow-[0_0_20px_rgba(167,139,250,0.35)]">
-            {data.hero.titleHighlight}
-          </span>
-        </h1>
-
-        <!-- Subtitle Paragraph -->
-        <p class="mt-3.5 text-sm sm:text-base leading-relaxed text-muted-foreground font-normal max-w-xl">
-          {data.hero.subtitle}
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="mt-6 flex flex-wrap items-center gap-3.5">
-          <a
-            href="#work"
-            class="brackets group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all hover:scale-[1.02]"
-          >
-            {data.hero.ctaWork}
-            <svg class="size-4 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </a>
-
-          <a
-            href="/Axell_Rojas_CV.pdf"
-            download="Axell_Rojas_CV.pdf"
-            class="inline-flex items-center gap-2 rounded-lg border border-border bg-card/80 px-4.5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-foreground hover:border-primary/60 hover:text-primary transition-all backdrop-blur-sm cursor-pointer"
-          >
-            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" x2="12" y1="15" y2="3"></line>
-            </svg>
-            {data.hero.ctaCv}
-          </a>
-
-          <button
-            id="open-dossier-hero"
-            type="button"
-            class="inline-flex items-center gap-1.5 px-3 py-2.5 font-mono text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-          >
-            <span class="size-1.5 rounded-full bg-emerald-500"></span>
-            <span>Dossier &amp; Contact</span>
-          </button>
-        </div>
-
-        <!-- Quick Spec Stats Row: Generous Gap so AD DS / WS22 fits on a single line with Enterprise Infrastructure below it -->
-        <div class="mt-8 flex flex-wrap items-start gap-8 sm:gap-12 border-t border-border pt-4 max-w-2xl">
-          <div>
-            <p class="font-mono text-lg sm:text-xl font-black text-foreground whitespace-nowrap">2+ Yrs</p>
-            <p class="font-mono text-xs text-muted-foreground whitespace-nowrap mt-1">Intel Cleanroom Ops</p>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-white font-bold text-base">Axell Rojas</h3>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              VERIFIED
+            </span>
           </div>
-          <div>
-            <p class="font-mono text-lg sm:text-xl font-black text-primary whitespace-nowrap">AD DS / WS22</p>
-            <p class="font-mono text-xs text-muted-foreground whitespace-nowrap mt-1">Enterprise Infrastructure</p>
-          </div>
-          <div>
-            <p class="font-mono text-lg sm:text-xl font-black text-foreground whitespace-nowrap">RAG &amp; n8n</p>
-            <p class="font-mono text-xs text-muted-foreground whitespace-nowrap mt-1">Applied Agentic AI</p>
-          </div>
+          <p class="text-xs text-slate-400 font-mono mt-0.5">
+            {isEn ? "Systems Admin · Cloud & Security" : "Admin de Sistemas · Cloud & Seguridad"}
+          </p>
+          <p class="text-[11px] text-slate-500 mt-0.5">
+            Costa Rica · English / Spanish
+          </p>
         </div>
       </div>
 
-      <!-- Right Column: Exactly 2 Project Cards + 1 Fully Enclosed Status Card (5 cols) -->
-      <div class="lg:col-span-5 relative mt-8 lg:mt-0">
-        <div class="flex flex-col gap-4 max-w-md ml-auto">
-          
-          <!-- Card 01: Alura Agente Inteligente (Featured AI & RAG) -->
-          <a
-            href="#alura-agent"
-            class="brackets group relative flex flex-col rounded-tr-lg rounded-bl-lg border border-primary/50 bg-card/95 p-5 shadow-xl shadow-primary/15 backdrop-blur-md transition-all hover:border-primary hover:scale-[1.02] cursor-pointer lg:rotate-1"
-          >
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-3xl font-black leading-none text-primary">01</span>
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/30 px-2 py-0.5 rounded-full bg-primary/10">
-                RAG &amp; AGENTIC AI
-              </span>
-            </div>
-            <h3 class="mt-2.5 text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-              Alura Agente Inteligente
-            </h3>
-            <p class="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">
-              {heroProject1Desc}
-            </p>
-            <div class="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] font-semibold text-primary uppercase tracking-wider">
-              <span>View architectural lab</span>
-              <svg class="size-3 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-          </a>
-
-          <!-- Card 02: Windows Server 2022 Enterprise Lab (WS22 - Infrastructure Pillar) -->
-          <a
-            href="#ws22-lab"
-            class="brackets group relative flex flex-col rounded-tr-lg rounded-bl-lg border border-border bg-card/85 p-5 shadow-md backdrop-blur-md transition-all hover:border-primary/50 hover:bg-card hover:scale-[1.02] cursor-pointer lg:rotate-3"
-          >
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-3xl font-black leading-none text-primary/80">02</span>
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground border border-border px-2 py-0.5 rounded-full">
-                ACTIVE DIRECTORY &amp; VMWARE
-              </span>
-            </div>
-            <h3 class="mt-2.5 text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-              Windows Server 2022 Enterprise Lab
-            </h3>
-            <p class="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">
-              {heroProject2Desc}
-            </p>
-            <div class="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] font-semibold text-primary uppercase tracking-wider">
-              <span>View infrastructure lab</span>
-              <svg class="size-3 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-          </a>
-
-          <!-- Card 03: Fully Enclosed System Status Card (No clipping, completely enclosed with full borders and legible text!) -->
-          <div class="brackets relative rounded-xl border border-primary/40 bg-card/95 backdrop-blur-md p-4 sm:p-5 mt-2.5 shadow-xl">
-            <div class="flex items-center justify-between">
-              <p class="font-mono text-xs tracking-[0.25em] text-muted-foreground uppercase font-semibold">
-                {data.hero.systemStatus}
-              </p>
-              <span class="size-2 rounded-full bg-emerald-500 animate-ping"></span>
-            </div>
-            <p class="mt-2 font-mono text-sm sm:text-base font-extrabold leading-snug text-foreground">
-              {data.hero.systemReady}
-            </p>
+      <!-- 4 Value Pillar Cards (2x2 Grid) -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="text-2xl font-black text-cyan-400 font-mono">2+ {isEn ? "Yrs" : "Años"}</span>
+          <div class="text-xs font-semibold text-white">Intel 24/7 Operations</div>
+          <div class="text-[11px] text-slate-400 leading-snug">
+            {isEn ? "Process control, strict SLAs & L2 resolution." : "Control de procesos, SLA e incidentes L2."}
           </div>
+        </div>
 
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="text-2xl font-black text-blue-400 font-mono">CIS L2</span>
+          <div class="text-xs font-semibold text-white">Linux Hardening</div>
+          <div class="text-[11px] text-slate-400 leading-snug">
+            {isEn ? "Debian/RHEL, UFW DROP, Fail2ban, Nginx." : "Debian/RHEL, UFW DROP, Fail2ban, Nginx."}
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="text-2xl font-black text-indigo-400 font-mono">AD DS</span>
+          <div class="text-xs font-semibold text-white">Windows Server 2022</div>
+          <div class="text-[11px] text-slate-400 leading-snug">
+            {isEn ? "AGDLP model, 14-char GPOs, DNS/DHCP." : "Modelo AGDLP, GPOs de 14 chars, DNS/DHCP."}
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="text-2xl font-black text-purple-400 font-mono">CI/CD</span>
+          <div class="text-xs font-semibold text-white">DevOps &amp; RAG AI</div>
+          <div class="text-[11px] text-slate-400 leading-snug">
+            {isEn ? "Serverless cron, n8n, FAISS vector, Docker." : "Pipelines serverless, n8n, FAISS, Docker."}
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-<script>
-  const openHeroDossier = document.getElementById('open-dossier-hero');
-  openHeroDossier?.addEventListener('click', () => {
-    window.dispatchEvent(new CustomEvent('open-dossier'));
-  });
-</script>

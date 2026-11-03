@@ -7,118 +7,86 @@ interface Props {
 
 const { currentLang = 'es' } = Astro.props;
 const data = portfolioData[currentLang];
+const isEn = currentLang === 'en';
+
+const kLabel = isEn ? "Professional Profile & Engineering Ethos" : "Perfil Profesional & Metodología";
+const kTitle = isEn
+  ? "Discipline from Mission-Critical Tech, Vision for Autonomous Systems"
+  : "Disciplina en Operaciones Críticas, Visión en Sistemas Autónomos";
 ---
 
-<section id="about" class="relative scroll-mt-20 border-b border-border py-16 sm:py-24">
-  <div class="pointer-events-none absolute inset-0 bg-grid opacity-20"></div>
+<section id="about" class="relative scroll-mt-24 py-12 border-b border-slate-800/80 space-y-8">
+  <!-- Section Kicker Header -->
+  <div class="border-b border-slate-800/80 pb-6">
+    <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">{data.about.label}</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight">{kTitle}</h2>
+  </div>
 
-  <div class="relative mx-auto max-w-7xl px-6 lg:px-16">
-    <!-- Section Kicker Header -->
-    <div class="flex items-center gap-3">
-      <span class="h-px w-8 bg-primary"></span>
-      <span class="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
-        {data.about.label}
-      </span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+    <!-- Left Column: Bio Narrative (7 cols) -->
+    <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+      <div class="space-y-4">
+        <p class="text-base sm:text-lg leading-relaxed text-slate-300 font-normal">
+          {data.about.p1}
+        </p>
+
+        <p class="text-sm sm:text-base leading-relaxed text-slate-400 font-normal">
+          {data.about.p2}
+        </p>
+      </div>
+
+      <!-- Languages & Location Cards -->
+      <div class="pt-6 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="font-mono text-[10px] text-cyan-400 uppercase tracking-wider">IDIOMAS / LANGUAGES</span>
+          <p class="font-semibold text-xs text-white">Spanish: <span class="font-normal text-slate-400">Nativo</span> · English: <span class="font-normal text-slate-400">B1 (Technical)</span></p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl space-y-1">
+          <span class="font-mono text-[10px] text-cyan-400 uppercase tracking-wider">UBICACIÓN / LOCATION</span>
+          <p class="font-semibold text-xs text-white">Alajuela, Costa Rica <span class="font-normal text-slate-400">· Remoto / Híbrido</span></p>
+        </div>
+      </div>
     </div>
 
-    <!-- Main Grid: items-stretch for 100% Vertical Symmetry -->
-    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-      
-      <!-- Left Column: Bio Narrative (7 cols) -->
-      <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
-        <div class="space-y-4">
-          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-            Discipline from High-Precision Tech, Vision for Autonomous Systems
-          </h2>
+    <!-- Right Column: Interactive Dossier Trigger Card (5 cols) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <button
+        id="open-dossier-about"
+        type="button"
+        class="glass-card group w-full h-full rounded-2xl p-6 sm:p-8 flex flex-col justify-between text-left border-cyan-500/30 hover:border-cyan-400 transition-all cursor-pointer relative overflow-hidden"
+      >
+        <div class="pointer-events-none absolute -right-10 -top-10 size-48 rounded-full bg-cyan-500/10 blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
 
-          <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
-            {data.about.p1}
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[10px] font-bold tracking-widest text-cyan-400 uppercase border border-cyan-500/30 px-3 py-1 rounded-full bg-cyan-500/10">
+              SYSADMIN DOSSIER
+            </span>
+            <span class="font-mono text-xs text-slate-500">ID: AR-9924</span>
+          </div>
+
+          <h3 class="mt-4 text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+            {isEn ? "Open Technical Candidate Dossier" : "Abrir Dossier Técnico del Candidato"}
+          </h3>
+          <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+            {isEn
+              ? "Interactive telemetry card detailing core systems proficiencies, operational mindset, shift readiness, and direct contact protocols."
+              : "Ficha interactiva con métricas clave de sistemas, mentalidad operativa, disponibilidad de turnos y protocolos de contacto."}
           </p>
-
-          <p class="text-sm sm:text-base leading-relaxed text-muted-foreground font-normal">
-            {data.about.p2}
-          </p>
         </div>
 
-        <!-- Languages & Location Cards (Bottom of Left Column) -->
-        <div class="pt-6 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="h-[76px] p-3.5 rounded-xl border border-border bg-card/50 flex flex-col justify-between">
-            <span class="font-mono text-[10px] text-muted-foreground uppercase">IDIOMAS / LANGUAGES</span>
-            <div>
-              <p class="font-semibold text-xs text-foreground">Spanish: <span class="font-normal text-muted-foreground">Nativo</span> · English: <span class="font-normal text-muted-foreground">B1 (Technical)</span></p>
-            </div>
-          </div>
-
-          <div class="h-[76px] p-3.5 rounded-xl border border-border bg-card/50 flex flex-col justify-between">
-            <span class="font-mono text-[10px] text-muted-foreground uppercase">UBICACIÓN &amp; DISPONIBILIDAD</span>
-            <div>
-              <p class="font-semibold text-xs text-foreground">Naranjo, Alajuela, Costa Rica</p>
-              <p class="font-mono text-[10px] text-emerald-400 flex items-center gap-1">
-                <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                On-Site / Híbrido / Remoto
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column: Quote Card, Metrics, & Aligned Action Card (5 cols) -->
-      <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
-        <!-- Quote Box -->
-        <div class="brackets relative rounded-2xl border border-primary/40 bg-card/85 p-6 sm:p-7 backdrop-blur-md shadow-lg flex-1 flex flex-col justify-between">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-primary/70">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
-            </svg>
-
-            <p class="mt-3 text-base sm:text-lg font-bold leading-snug text-foreground">
-              {data.about.quote}
-            </p>
-          </div>
-
-          <div class="mt-5 flex items-center gap-3 pt-4 border-t border-border">
-            <div class="size-10 rounded-full overflow-hidden border border-primary/50 shrink-0">
-              <img src="/images/avatar.jpg" alt="Axell Rojas" class="size-full object-cover" />
-            </div>
-            <div>
-              <p class="font-bold text-xs text-foreground">Axell Rojas</p>
-              <p class="font-mono text-[10px] text-primary">Systems Engineer · IT Infrastructure</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Metrics Cards (3 columns) -->
-        <div class="grid grid-cols-3 gap-3">
-          {data.about.stats.map((stat) => (
-            <div class="rounded-xl border border-border bg-card/50 p-3 text-center flex flex-col justify-center">
-              <p class="font-mono text-xl sm:text-2xl font-black text-primary leading-none">{stat.value}</p>
-              <p class="font-mono text-[10px] text-muted-foreground mt-1 leading-tight">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        <!-- Aligned Contact Dossier Card Button: Matches bottom height (76px) of left column! -->
-        <button
-          id="open-dossier-about"
-          type="button"
-          class="group h-[76px] w-full flex items-center justify-between rounded-xl border border-primary/40 bg-card/90 px-5 py-3 hover:border-primary hover:bg-card hover:shadow-lg hover:shadow-primary/15 transition-all cursor-pointer"
-        >
-          <div class="text-left">
-            <span class="font-mono text-[10px] text-primary uppercase tracking-widest font-semibold">DOSSIER TÉCNICO &amp; CONTACTO</span>
-            <p class="font-extrabold text-sm text-foreground group-hover:text-primary transition-colors mt-0.5">
-              {data.playerCard.viewProfile}
-            </p>
-          </div>
-          
-          <div class="size-9 rounded-lg border border-primary/30 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-            <svg class="size-4 transition-transform group-hover:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <span class="font-mono text-xs font-semibold text-cyan-400">
+            {isEn ? "Launch Dossier Modal ↗" : "Ver Perfil Extendido ↗"}
+          </span>
+          <div class="size-8 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center group-hover:bg-cyan-400 group-hover:text-slate-950 transition-all">
+            <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
           </div>
-        </button>
-      </div>
-
+        </div>
+      </button>
     </div>
   </div>
 </section>

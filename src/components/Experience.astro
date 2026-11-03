@@ -7,69 +7,110 @@ interface Props {
 
 const { currentLang = 'es' } = Astro.props;
 const data = portfolioData[currentLang];
+const isEn = currentLang === 'en';
+
+const kLabel = isEn ? "High-Availability Production Experience" : "Experiencia en Entorno de Alta Disponibilidad";
+const kTitle = isEn
+  ? "Mission-Critical Systems & Cleanroom Operations — Intel Corporation"
+  : "Operaciones de Servidores & Sala Limpia — Intel Corporation";
+
+const capabilityCards = isEn
+  ? [
+      {
+        num: "01",
+        title: "Real-Time Telemetry & Monitoring",
+        desc: "Continuous supervision using proprietary real-time process control software, proactively mitigating telemetry drifts and anomalies before impacting operational uptime."
+      },
+      {
+        num: "02",
+        title: "Strict SLA Incident Response",
+        desc: "Rapid diagnostic and resolution of tooling anomalies under tight SLA windows, applying structured root-cause analysis (RCA) and L2/L3 escalation protocols."
+      },
+      {
+        num: "03",
+        title: "24/7 Continuous Shift Continuity (4x3 12h)",
+        desc: "Rigorous shift handovers, log auditing, calibration verifications, and compliance with strict ITIL and Standard Operating Procedures (SOP)."
+      }
+    ]
+  : [
+      {
+        num: "01",
+        title: "Monitoreo en Tiempo Real",
+        desc: "Supervisión continua mediante software propietario de control de procesos en tiempo real, anticipando anomalías de telemetría y registros antes de que afectaran el tiempo de actividad."
+      },
+      {
+        num: "02",
+        title: "Tiempos de Respuesta SLA Estrictos",
+        desc: "Diagnóstico y resolución de incidencias en maquinaria TSX bajo ventanas de tiempo SLA críticas, aplicando análisis de causa raíz y protocolos de escalamiento Nivel 2 y 3."
+      },
+      {
+        num: "03",
+        title: "Turnos Rotativos 24/7 (4x3 12h)",
+        desc: "Transferencia estructurada de bitácoras (shift handovers), calibraciones y auditorías de verificación en régimen continuo bajo estándares ITIL y SOP."
+      }
+    ];
 ---
 
-<section id="experience" class="relative scroll-mt-20 border-b border-border py-16 sm:py-24">
-  <div class="pointer-events-none absolute inset-0 bg-grid opacity-20"></div>
+<section id="experience" class="relative scroll-mt-24 py-12 sm:py-16 border-b border-slate-800/80">
+  <div class="glass-card rounded-2xl p-6 sm:p-10 space-y-8">
+    <!-- Header with Intel Branding -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-600/20 font-mono">
+          intel
+        </div>
+        <div>
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">{kLabel}</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5 tracking-tight">{kTitle}</h2>
+        </div>
+      </div>
 
-  <div class="relative mx-auto max-w-7xl px-6 lg:px-16">
-    <!-- Section Kicker Header -->
-    <div class="flex items-center gap-3">
-      <span class="h-px w-8 bg-primary"></span>
-      <span class="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
-        {data.experience.label}
-      </span>
+      <div class="flex items-center gap-2 self-start sm:self-center">
+        <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+          oct. 2023 - actualidad · 2+ Años
+        </span>
+      </div>
     </div>
 
-    <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-      Professional Background &amp; Mission-Critical Ops
-    </h2>
-
-    <div class="mt-12 space-y-12">
-      {data.experience.items.map((item) => (
-        <div class="grid grid-cols-1 gap-6 border-t border-dashed border-border pt-8 md:grid-cols-[260px_1fr] md:gap-12">
-          <!-- Left: Meta Info -->
-          <div>
-            <h3 class="text-xl font-bold text-foreground">
-              {item.role}
-            </h3>
-            <p class="mt-1 font-semibold text-primary text-sm">
-              {item.company}
-            </p>
-            <p class="mt-2 font-mono text-xs text-muted-foreground flex items-center gap-1.5">
-              <span class="size-1.5 rounded-full bg-primary/60"></span>
-              {item.period}
-            </p>
+    <!-- 3 Core Capability Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {capabilityCards.map((cap) => (
+        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition-colors">
+          <div class="text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+            {cap.num}. {cap.title}
           </div>
-
-          <!-- Right: Summary & Bullets -->
-          <div>
-            <p class="text-sm sm:text-base font-medium text-foreground/90 leading-relaxed">
-              {item.summary}
-            </p>
-
-            <ul class="mt-4 space-y-2.5">
-              {item.bullets.map((b) => (
-                <li class="flex items-start gap-3">
-                  <span class="text-primary font-mono text-xs mt-1">▸</span>
-                  <span class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {b}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <!-- Tags -->
-            <div class="mt-6 flex flex-wrap gap-2">
-              {item.tags.map((tag) => (
-                <span class="font-mono text-[11px] rounded-full border border-border bg-card/60 px-3 py-0.5 text-muted-foreground">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            {cap.desc}
+          </p>
         </div>
       ))}
     </div>
+
+    <!-- Detailed Responsibilities & Standards -->
+    {data.experience.items.map((item) => (
+      <div class="pt-6 border-t border-slate-800/80 space-y-4">
+        <p class="text-slate-300 text-sm leading-relaxed max-w-3xl">
+          {item.summary}
+        </p>
+
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300">
+          {item.bullets.map((b) => (
+            <li class="flex items-start gap-2.5">
+              <span class="text-cyan-400 font-mono mt-0.5 font-bold">✓</span>
+              <span class="leading-relaxed">{b}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Operating Tags -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          {item.tags.map((tag) => (
+            <span class="font-mono text-xs rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-1 text-slate-400">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>

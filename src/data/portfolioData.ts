@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   name: string;
+  category?: "infra" | "devops" | "ai";
   tag: string;
   short: string;
   summary: string;
@@ -186,6 +187,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
       projects: [
         {
           id: "alura-agent",
+          category: "ai",
           name: "Alura Agente Inteligente",
           tag: "RAG & AGENTIC AI",
           short: "Enterprise RAG Q&A agent for business documents with exact source citations.",
@@ -236,6 +238,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
         },
         {
           id: "hr-assistant",
+          category: "ai",
           name: "HR AI Process Automation Assistant",
           tag: "WORKFLOW AUTOMATION & RAG",
           short: "Automated HR assistant orchestrating n8n workflows, Cohere embeddings, and Telegram.",
@@ -275,11 +278,12 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
             "REST APIs",
             "Python",
           ],
-          github: "https://github.com/STXNES",
+          github: "https://github.com/STXNES/HR-AI-Assistant",
           image: "/images/projects/hr-assistant.svg",
         },
         {
           id: "ws22-lab",
+          category: "infra",
           name: "Windows Server 2022 Enterprise Home Lab",
           tag: "ENTERPRISE INFRASTRUCTURE & AD DS",
           short: "Virtualized enterprise Active Directory domain infrastructure in VMware Workstation Pro.",
@@ -324,6 +328,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
         },
         {
           id: "linux-infrastructure",
+          category: "infra",
           name: "Enterprise Linux Hardened Server & Services",
           tag: "LINUX ADMINISTRATION & HARDENING",
           short: "Hardened Debian/RHEL enterprise server with systemd orchestration, fail2ban, and Nginx.",
@@ -366,6 +371,57 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
           github: "https://github.com/STXNES/linux-enterprise-infrastructure",
           image: "/images/projects/linux-infrastructure.svg",
         },
+        {
+          id: "devops-pipeline",
+          category: "devops",
+          name: "DevOps Automated ETL & DNS Security Pipeline",
+          tag: "DEVOPS & SERVERLESS CI/CD",
+          short: "Serverless data extraction, DNS deliverability auditing, and Streamlit telemetry.",
+          summary:
+            "Automated ETL pipeline executing scheduled web extraction on GitHub Actions runners, validating domain DNS health (MX, SPF, DKIM, DMARC), and syncing batches to Neon PostgreSQL with a Streamlit dashboard.",
+          bullets: [
+            "Serverless GitHub Actions autopilot on POSIX cron (0 15 * * *) with in-memory secret injection and automated state commits.",
+            "Programmatic DNS audit suite resolving MX, SPF, DKIM, and DMARC records via dnspython to enforce zero-spam deliverability.",
+          ],
+          meta: {
+            type: "DevOps & Cloud Pipeline",
+            role: "DevOps & Data Engineer",
+            status: "Autonomous Cron / Production",
+            highlight: "GitHub Actions · dnspython · Streamlit · Neon DB",
+            year: "2026",
+          },
+          overview:
+            "Engineered to demonstrate automated, serverless data pipelines without persistent VM overhead. The system triggers on GitHub Actions cron, parses search engines with heuristic anti-crawler-trap filters, audits DNS records, reconciles datasets against an append-only master database, and feeds an interactive Streamlit operations command center.",
+          decisions: [
+            {
+              title: "Serverless Ephemeral Runners",
+              body: "Leveraged GitHub Actions Ubuntu runners for scheduled execution, injecting secrets in memory and destroying temporary credentials upon job termination.",
+            },
+            {
+              title: "Programmatic DNS Mail Security",
+              body: "Integrated dnspython to query MX, SPF, DKIM, and DMARC TXT records programmatically before ingesting domains, protecting sender reputation.",
+            },
+            {
+              title: "Decoupled Storage & Analytics",
+              body: "Combined versioned CSV batch snapshots in Git with relational schema migrations to cloud PostgreSQL (Neon).",
+            },
+          ],
+          challenges: [
+            "Preventing recursive GitHub Actions trigger loops when committing new batch data; resolved using [skip ci] commit signatures and authenticated bot credentials.",
+          ],
+          stack: [
+            "GitHub Actions (CI/CD)",
+            "Python 3.10",
+            "dnspython",
+            "Streamlit",
+            "PostgreSQL (Neon)",
+            "Bash",
+            "Docker",
+          ],
+          github: "https://github.com/STXNES/DevOps-Automated-ETL-Pipeline",
+          image: "/images/projects/alura-agent.svg",
+        },
+
       ],
     },
     experience: {
@@ -579,6 +635,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
       projects: [
         {
           id: "alura-agent",
+          category: "ai",
           name: "Alura Agente Inteligente",
           tag: "RAG & IA AGÉNTICA",
           short: "Agente RAG empresarial para consulta de documentación interna con citas exactas.",
@@ -625,6 +682,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
         },
         {
           id: "hr-assistant",
+          category: "ai",
           name: "HR AI Process Automation Assistant",
           tag: "AUTOMATIZACIÓN & RAG",
           short: "Asistente automatizado de RRHH con n8n, embeddings Cohere y bot de Telegram.",
@@ -664,11 +722,12 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
             "REST APIs",
             "Python",
           ],
-          github: "https://github.com/STXNES",
+          github: "https://github.com/STXNES/HR-AI-Assistant",
           image: "/images/projects/hr-assistant.svg",
         },
         {
           id: "ws22-lab",
+          category: "infra",
           name: "Windows Server 2022 Enterprise Home Lab",
           tag: "INFRAESTRUCTURA & ACTIVE DIRECTORY",
           short: "Infraestructura de dominio Active Directory empresarial virtualizada en VMware Workstation.",
@@ -713,6 +772,7 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
         },
         {
           id: "linux-infrastructure",
+          category: "infra",
           name: "Enterprise Linux Hardened Server & Services",
           tag: "ADMINISTRACIÓN LINUX & HARDENING",
           short: "Servidor empresarial Debian/RHEL robustecido con systemd, fail2ban y proxy inverso Nginx.",
@@ -755,6 +815,57 @@ export const portfolioData: { en: LocaleContent; es: LocaleContent } = {
           github: "https://github.com/STXNES/linux-enterprise-infrastructure",
           image: "/images/projects/linux-infrastructure.svg",
         },
+        {
+          id: "devops-pipeline",
+          category: "devops",
+          name: "DevOps Automated ETL & DNS Security Pipeline",
+          tag: "DEVOPS & CI/CD SERVERLESS",
+          short: "Extracción serverless de datos, auditoría de seguridad DNS y dashboard en Streamlit.",
+          summary:
+            "Pipeline ETL automatizado en GitHub Actions (cron diario) que extrae datos con filtros heurísticos, audita la salud DNS (MX, SPF, DKIM, DMARC) y sincroniza lotes a PostgreSQL (Neon) con telemetría en Streamlit.",
+          bullets: [
+            "Autopilot serverless en GitHub Actions con ejecución cron (0 15 * * *), inyección segura de secretos y commits automatizados.",
+            "Suite de auditoría DNS programática que resuelve registros MX, SPF, DKIM y DMARC con dnspython para garantizar entregabilidad.",
+          ],
+          meta: {
+            type: "Pipeline DevOps & Datos",
+            role: "Ingeniero DevOps & Datos",
+            status: "Cron Autónomo / Producción",
+            highlight: "GitHub Actions · dnspython · Streamlit · Neon DB",
+            year: "2026",
+          },
+          overview:
+            "Arquitectura serverless diseñada para operar pipelines continuos de datos sin costos de máquinas virtuales persistentes. Ejecutado en runners efímeros de GitHub Actions, el sistema filtra trampas de rastreo, verifica la validez de servidores de correo vía DNS, reconcilia la información contra una base de datos maestra append-only y sincroniza métricas en un dashboard interactivo de Streamlit.",
+          decisions: [
+            {
+              title: "Ejecución Serverless en Runners Efímeros",
+              body: "Uso de entornos virtuales de Ubuntu en GitHub Actions con inyección en memoria de variables de entorno y destrucción inmediata de credenciales.",
+            },
+            {
+              title: "Auditoría DNS Automatizada",
+              body: "Resolución en tiempo real de registros MX, SPF (v=spf1), DKIM (selectores criptográficos) y DMARC (_dmarc) antes de procesar dominios.",
+            },
+            {
+              title: "Sincronización Híbrida de Almacenamiento",
+              body: "Versionado de lotes CSV en Git combinado con scripts de migración estructurada hacia PostgreSQL en la nube (Neon).",
+            },
+          ],
+          challenges: [
+            "Prevención de bucles recursivos en GitHub Actions al confirmar datos nuevos; resuelto mediante firmas [skip ci] y credenciales autenticadas del bot.",
+          ],
+          stack: [
+            "GitHub Actions (CI/CD)",
+            "Python 3.10",
+            "dnspython",
+            "Streamlit",
+            "PostgreSQL (Neon)",
+            "Bash",
+            "Docker",
+          ],
+          github: "https://github.com/STXNES/DevOps-Automated-ETL-Pipeline",
+          image: "/images/projects/alura-agent.svg",
+        },
+
       ],
     },
     experience: {
