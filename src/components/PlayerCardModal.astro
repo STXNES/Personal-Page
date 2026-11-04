@@ -15,11 +15,11 @@ const modalBio = currentLang === 'en'
 
 <div
   id="player-modal-overlay"
-  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto"
 >
   <div
     id="player-modal-card"
-    class="brackets relative w-full max-w-xl rounded-2xl border border-border bg-card/95 p-6 sm:p-8 shadow-2xl backdrop-blur-xl transform scale-95 transition-transform duration-300"
+    class="brackets relative w-[92%] sm:w-full max-w-sm sm:max-w-xl max-h-[85vh] sm:max-h-none overflow-y-auto rounded-2xl border border-border bg-card/95 p-5 sm:p-8 shadow-2xl backdrop-blur-xl transform scale-95 transition-transform duration-300 my-auto"
   >
     <!-- Modal Close Button -->
     <button
@@ -43,9 +43,9 @@ const modalBio = currentLang === 'en'
     </div>
 
     <!-- Main Profile Info: 100% Symmetrical Photo & Info Heights -->
-    <div class="flex flex-col sm:flex-row gap-5 items-stretch">
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center sm:items-stretch">
       <!-- Portrait Photo Container -->
-      <div class="relative shrink-0 w-28 h-36 sm:w-32 sm:h-36 rounded-2xl overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20 bg-muted mx-auto sm:mx-0">
+      <div class="relative shrink-0 w-24 h-30 sm:w-32 sm:h-36 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20 bg-muted mx-auto sm:mx-0">
         <img
           src="/images/avatar.jpg"
           alt="Axell Rojas"
@@ -55,9 +55,9 @@ const modalBio = currentLang === 'en'
       </div>
 
       <!-- Names & Titles Container - Matches Photo Height Exactly -->
-      <div class="flex flex-col justify-between h-36 text-center sm:text-left">
+      <div class="flex flex-col justify-between text-center sm:text-left sm:h-36 space-y-2 sm:space-y-0">
         <div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground leading-none">
+          <h3 class="text-xl sm:text-3xl font-extrabold tracking-tight text-foreground leading-tight sm:leading-none">
             Axell Rojas
           </h3>
           <p class="font-mono text-xs sm:text-sm text-primary font-medium mt-1.5">
@@ -71,9 +71,9 @@ const modalBio = currentLang === 'en'
     </div>
 
     <!-- Contact & Coordinates Grid: 4 Equal-Height Symmetrical Cards -->
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6 border-t border-border">
+    <div class="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-4 sm:pt-6 border-t border-border">
       <!-- Card 1: Email -->
-      <div class="h-[72px] flex items-center justify-between p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
+      <div class="min-h-[58px] sm:h-[72px] flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
         <div class="overflow-hidden">
           <p class="font-mono text-[10px] text-muted-foreground uppercase">{data.playerCard.email}</p>
           <p class="font-mono text-xs text-foreground font-semibold truncate mt-0.5">axelry2402@gmail.com</p>
@@ -91,7 +91,7 @@ const modalBio = currentLang === 'en'
       </div>
 
       <!-- Card 2: Phone -->
-      <div class="h-[72px] flex items-center justify-between p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
+      <div class="min-h-[58px] sm:h-[72px] flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
         <div class="overflow-hidden">
           <p class="font-mono text-[10px] text-muted-foreground uppercase">{data.playerCard.phone}</p>
           <p class="font-mono text-xs text-foreground font-semibold truncate mt-0.5">+506 6359-9128</p>
@@ -109,7 +109,7 @@ const modalBio = currentLang === 'en'
       </div>
 
       <!-- Card 3: Location -->
-      <div class="h-[72px] flex items-center justify-between p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
+      <div class="min-h-[58px] sm:h-[72px] flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
         <div class="overflow-hidden">
           <p class="font-mono text-[10px] text-muted-foreground uppercase">{data.playerCard.location}</p>
           <p class="font-mono text-xs text-foreground font-semibold truncate mt-0.5">Naranjo, Alajuela, CR</p>
@@ -118,7 +118,7 @@ const modalBio = currentLang === 'en'
       </div>
 
       <!-- Card 4: Professional Profiles (Identical Height & Padding) -->
-      <div class="h-[72px] flex items-center justify-between p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
+      <div class="min-h-[58px] sm:h-[72px] flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl border border-border bg-secondary/40 hover:border-primary/40 transition-colors">
         <div class="overflow-hidden">
           <p class="font-mono text-[10px] text-muted-foreground uppercase">PERFILES PROFESIONALES</p>
           <div class="flex items-center gap-2 mt-1">
@@ -154,11 +154,11 @@ const modalBio = currentLang === 'en'
     </div>
 
     <!-- Download CV Action Button -->
-    <div class="mt-5">
+    <div class="mt-4 sm:mt-5">
       <a
         href="/Axell_Rojas_CV.pdf"
         download="Axell_Rojas_CV.pdf"
-        class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary px-5 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all hover:scale-[1.01]"
+        class="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary px-4 py-3 sm:px-5 sm:py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all hover:scale-[1.01]"
       >
         <svg class="size-4 transition-transform group-hover:-translate-y-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
